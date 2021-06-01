@@ -30,7 +30,7 @@ search.innerHTML = `
   </div>
   `;
 
-const input = document.querySelector(".input");
+const input = document.querySelector("input");
 const dropdown = document.querySelector(".dropdown");
 const resultsWrapper = document.querySelector(".results");
 

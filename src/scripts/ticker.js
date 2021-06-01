@@ -17,8 +17,6 @@ export const onTickerSelect = async (arg) => {
   document.querySelector(".single-ticker").innerHTML = tickerTemplate(
     response.data
   );
-  //   console.log(response.data);
-  //   return response.data.bestMatches;
 };
 
 const tickerTemplate = (tickerDetail) => {
@@ -71,8 +69,14 @@ const tickerTemplate = (tickerDetail) => {
             ? (tickerDetail.SharesShort / 1000000000).toFixed(2) + "B"
             : (tickerDetail.SharesShort / 1000000).toFixed(2) + "M"
         }</p>
-        <p></p>
-        <p></p>
-        <p></p>
+
+        <p>Insider Ownership: ${tickerDetail["PercentInsiders"]}%</p>
+        <p>Institutional Ownership: ${tickerDetail["PercentInstitutions"]}%</p>
+
+        <h4>Technicals</h4>
+        <p>50-Day Moving Average (50D MA): ${
+          tickerDetail["50DayMovingAverage"]
+        }</p>
+        <p>Placeholder</p>
     </div>`;
 };
