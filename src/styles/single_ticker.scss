@@ -1,0 +1,18 @@
+.single-ticker {
+  padding: 20px 10px;
+  width: 100%;
+  .content {
+    h1 {
+      font-weight: bolder;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    h4 {
+      font-weight: bolder;
+      margin: 5px 0;
+    }
+    p {
+      margin: 5px 0;
+    }
+  }
+}
