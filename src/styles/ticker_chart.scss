@@ -3,20 +3,26 @@
 //   width: 40%;
 // }
 
-#myChart {
-    width: 40%;
+.chart {
+    width: 60%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+#dailyChart {
+    width: 100%;
     height: auto;
     max-height: 60%;
-    max-width: 60%;
+    // max-width: 60%;
     padding-right: 20px;
 }
 
 
-#myChart2 {
-    width: 40%;
+#weeklyChart {
+    width: 100%;
     height: auto;
     max-height: 60%;
-    max-width: 60%;
+    // max-width: 60%;
     padding-right: 20px;
 }
 

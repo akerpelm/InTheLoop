@@ -20,8 +20,16 @@ export const onTickerSelect = async (arg) => {
 };
 
 const tickerTemplate = (tickerDetail) => {
-  // console.log(tickerDetail);
-  return `
+  console.log(tickerDetail);
+  if (!tickerDetail.Name) {
+    return `
+    <div class="content">
+    <p>Due to the limitations of a the free API used to fetch historical data, some ETFs do not display complete/up-to-date information</p>
+    <p>Any other search will yield a full information page!</p>
+    <p>Check out some common tickers such as AAPL, MSFT, SBUX, or NKE!</p>
+    </div>`;
+  } else {
+    return `
     <div class="content">
         <h1>${tickerDetail.Name} (${tickerDetail.Symbol})</h1>
         <h4>Overview</h4>
@@ -79,4 +87,5 @@ const tickerTemplate = (tickerDetail) => {
         }</p>
         <p>Placeholder</p>
     </div>`;
+  }
 };

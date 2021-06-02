@@ -2,8 +2,8 @@ import * as Util from "./util";
 import { avAPIKey } from "../../secret";
 import axios from "axios";
 import { onTickerSelect } from "./ticker_info";
-import { onChartSelect } from "./ticker_chart";
-import { onChartSelect2 } from "./ticker_chart_2";
+import { onChartSelectDaily } from "./ticker_chart";
+import { onChartSelectWeekly } from "./ticker_chart_2";
 
 const fetchData = async (searchQuery) => {
   const response = await axios.get("https://www.alphavantage.co/query", {
@@ -53,8 +53,8 @@ export const onInput = async (e) => {
       dropdown.classList.remove("is-active");
       input.value = ticker["2. name"];
       onTickerSelect(ticker);
-      onChartSelect(ticker);
-      onChartSelect2(ticker);
+      onChartSelectDaily(ticker);
+      onChartSelectWeekly(ticker);
     });
     resultsWrapper.appendChild(queryOption);
   }

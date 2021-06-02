@@ -1,9 +1,7 @@
 import { tdAPIKey } from "../../secret";
 import axios from "axios";
-import { onInput } from "./search";
-import { onTickerSelect } from "./ticker_info";
 
-export const onChartSelect = async (arg) => {
+export const onChartSelectDaily = async (arg) => {
   let tickerSymbol = arg["1. symbol"];
   const response = await axios.get("https://api.twelvedata.com/time_series", {
     params: {
@@ -15,9 +13,9 @@ export const onChartSelect = async (arg) => {
     },
   });
 
-  if (window.myChart.id !== "myChart") myChart.destroy();
+  if (window.dailyChart.id !== "dailyChart") dailyChart.destroy();
 
-  document.querySelector(".ticker-chart").innerHTML = chartTemplate(
+  document.querySelector(".ticker-chart-daily").innerHTML = chartTemplate(
     response.data
   );
 };
@@ -48,9 +46,9 @@ const chartTemplate = (chartInfo) => {
     open[open.length - 1] - open[0] > 0 ? "rgb(0,255,0)" : "rgb(255, 0, 0)";
   percentChange = percentChange > 0 ? "+" + percentChange : percentChange;
 
-  let ctx = document.getElementById("myChart").getContext("2d");
+  let ctx = document.getElementById("dailyChart").getContext("2d");
 
-  window.myChart = new Chart(ctx, {
+  window.dailyChart = new Chart(ctx, {
     responsive: true,
     maintainAspectRatio: false,
     type: "line",
