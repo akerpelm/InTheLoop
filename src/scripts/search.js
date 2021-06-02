@@ -1,15 +1,16 @@
 import * as Util from "./util";
-import { apiKey } from "../../secret";
+import { avAPIKey } from "../../secret";
 import axios from "axios";
 import { onTickerSelect } from "./ticker_info";
 import { onChartSelect } from "./ticker_chart";
+import { onChartSelect2 } from "./ticker_chart_2";
 
 const fetchData = async (searchQuery) => {
   const response = await axios.get("https://www.alphavantage.co/query", {
     params: {
       function: "SYMBOL_SEARCH",
       keywords: searchQuery,
-      apikey: apiKey,
+      apikey: avAPIKey,
     },
   });
   if (response.data.Error) {
@@ -34,7 +35,7 @@ const input = document.querySelector("input");
 const dropdown = document.querySelector(".dropdown");
 const resultsWrapper = document.querySelector(".results");
 
-const onInput = async (e) => {
+export const onInput = async (e) => {
   const listings = await fetchData(e.target.value);
   if (!listings) {
     return dropdown.classList.remove("is-active");
@@ -53,6 +54,7 @@ const onInput = async (e) => {
       input.value = ticker["2. name"];
       onTickerSelect(ticker);
       onChartSelect(ticker);
+      onChartSelect2(ticker);
     });
     resultsWrapper.appendChild(queryOption);
   }

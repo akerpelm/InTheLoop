@@ -2,6 +2,7 @@ import "./styles/index.scss";
 import './scripts/search'
 import './scripts/ticker_info'
 import './scripts/ticker_chart'
+import './scripts/ticker_chart_2'
 
 
 
@@ -48,17 +49,3 @@ import './scripts/ticker_chart'
 
 //set timeout with clear timeout on input
 
-//test company info
-// const fetchData = async () => {
-//   const response = await axios.get("https://www.alphavantage.co/query", {
-//     params: {
-//         function: "OVERVIEW",
-//         symbol: "BA",
-//         apikey: "XC4SUZCTKM8LVK1Y",
-//     },
-//   });
-
-//   console.log(response.data);
-// };
-
-// fetchData();

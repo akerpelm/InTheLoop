@@ -1,4 +1,4 @@
-import { apiKey } from "../../secret";
+import { avAPIKey } from "../../secret";
 import axios from "axios";
 
 export const onTickerSelect = async (arg) => {
@@ -7,7 +7,7 @@ export const onTickerSelect = async (arg) => {
     params: {
       function: "OVERVIEW",
       symbol: tickerSymbol,
-      apikey: apiKey,
+      apikey: avAPIKey,
     },
   });
 

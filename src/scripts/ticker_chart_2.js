@@ -1,40 +1,41 @@
 import { tdAPIKey } from "../../secret";
 import axios from "axios";
-import { onInput } from "./search";
-import { onTickerSelect } from "./ticker_info";
 
-export const onChartSelect = async (arg) => {
+export const onChartSelect2 = async (arg) => {
   let tickerSymbol = arg["1. symbol"];
   const response = await axios.get("https://api.twelvedata.com/time_series", {
     params: {
       symbol: tickerSymbol,
-      interval: "15min",
+      interval: "2h",
       output: "200",
       apikey: tdAPIKey,
       source: "docs",
     },
   });
 
-  if (window.myChart.id !== "myChart") myChart.destroy();
+  if (window.myChart2.id !== "myChart2") myChart.destroy();
 
-  document.querySelector(".ticker-chart").innerHTML = chartTemplate(
+  document.querySelector(".ticker-chart-2").innerHTML = chartTemplate(
     response.data
   );
 };
 
+let oneWeekPrior = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
+
 const chartTemplate = (chartInfo) => {
-  let intervalFifteen = [];
+  let intervalTwoHour = [];
   let open = [];
   Object.values(chartInfo.values).map((datapoint) => {
-    let tmpDate = new Date(datapoint.datetime);
-    if (tmpDate.getDay() == new Date(Date.now()).getDay()) {
-      intervalFifteen.unshift(datapoint.datetime.slice(11));
+    let tmpDate = new Date(datapoint.datetime).toISOString();
+    if (tmpDate > oneWeekPrior) {
+      intervalTwoHour.unshift(datapoint.datetime);
     }
   });
 
   Object.values(chartInfo.values).map((datapoint) => {
-    let tmpDate = new Date(datapoint.datetime);
-    if (tmpDate.getDay() == new Date(Date.now()).getDay()) {
+    let tmpDate = new Date(datapoint.datetime).toISOString();
+
+    if (tmpDate > oneWeekPrior) {
       open.unshift(parseFloat(datapoint.open).toFixed(2));
     }
   });
@@ -48,21 +49,21 @@ const chartTemplate = (chartInfo) => {
     open[open.length - 1] - open[0] > 0 ? "rgb(0,255,0)" : "rgb(255, 0, 0)";
   percentChange = percentChange > 0 ? "+" + percentChange : percentChange;
 
-  let ctx = document.getElementById("myChart").getContext("2d");
+  let ctx = document.getElementById("myChart2").getContext("2d");
 
-  window.myChart = new Chart(ctx, {
+  window.myChart2 = new Chart(ctx, {
     responsive: true,
     maintainAspectRatio: false,
     type: "line",
     data: {
-      labels: intervalFifteen,
+      labels: intervalTwoHour,
       datasets: [
         {
           label: "",
           data: open,
           borderColor: color,
           borderWidth: 3,
-          pointHitRadius: 50,
+          pointHitRadius: 100,
         },
       ],
     },
@@ -93,6 +94,7 @@ const chartTemplate = (chartInfo) => {
             borderColor: "rgba(0,0,0,0)",
             tickColor: "rgba(0,0,0,0)",
           },
+          display: false,
           ticks: {
             display: false,
           },
@@ -101,7 +103,7 @@ const chartTemplate = (chartInfo) => {
       plugins: {
         title: {
           display: true,
-          text: `Daily: ${chartInfo.meta.symbol} (${percentChange}%)`,
+          text: `Weekly: ${chartInfo.meta.symbol} (${percentChange}%)`,
           color: color,
         },
         legend: {
