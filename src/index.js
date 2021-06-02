@@ -1,6 +1,7 @@
 import "./styles/index.scss";
 import './scripts/search'
-import './scripts/ticker'
+import './scripts/ticker_info'
+import './scripts/ticker_chart'
 
 
 

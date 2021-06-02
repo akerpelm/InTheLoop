@@ -8,13 +8,24 @@
     <script src="https://unpkg.com/regenerator-runtime@0.13.1/runtime.js"></script>
 
     <link rel="stylesheet" href="./dist/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>JS Project Skeleton</title>
   </head>
 
   <body>
     <div class="container">
       <div class="search"></div>
-      <div class="single-ticker"></div>
+      <div class="columns">
+        <div class="single-ticker"></div>
+        <!-- <div class="ticker-chart">
+          
+        </div> -->
+        <!-- <div class="ticker-chart"> -->
+        <!-- <div class="ticker-chart"> -->
+        <canvas id="myChart" class="ticker-chart" style="width:100%;height:100%;"> </canvas>
+        <!-- </div> -->
+        <!-- </div> -->
+      </div>
     </div>
     <script src="./dist/main.js"></script>
   </body>

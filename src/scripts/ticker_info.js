@@ -20,7 +20,7 @@ export const onTickerSelect = async (arg) => {
 };
 
 const tickerTemplate = (tickerDetail) => {
-  console.log(tickerDetail);
+  // console.log(tickerDetail);
   return `
     <div class="content">
         <h1>${tickerDetail.Name} (${tickerDetail.Symbol})</h1>

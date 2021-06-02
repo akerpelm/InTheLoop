@@ -1,4 +1,11 @@
 
 @import "reset.scss";
 @import "search.scss";
-@import "single_ticker.scss";
+@import "ticker_info.scss";
+@import "ticker_chart.scss";
+
+.columns {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
