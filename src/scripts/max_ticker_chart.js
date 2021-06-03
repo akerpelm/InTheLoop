@@ -1,62 +1,50 @@
 import { tdAPIKey, avAPIKey } from "../../secret";
 import axios from "axios";
 
-export const onChartSelectWeekly = async (arg) => {
+export const onChartSelectMax = async (arg) => {
   let tickerSymbol = arg["1. symbol"];
-  const response = await axios.get("https://api.twelvedata.com/time_series", {
+  console.log(tickerSymbol)
+  const response = await axios.get("https://www.alphavantage.co/query", {
     params: {
+      function: "TIME_SERIES_WEEKLY",
       symbol: tickerSymbol,
-      interval: "2h",
-      output: "200",
-      apikey: tdAPIKey,
-      source: "docs",
+      apikey: avAPIKey,
     },
   });
+  if (window.maxChart.id !== "maxChart") maxChart.destroy();
 
-  if (window.weeklyChart.id !== "weeklyChart") weeklyChart.destroy();
-
-  document.querySelector(".ticker-chart-weekly").innerHTML = chartTemplate(
+  document.querySelector(".ticker-chart-max").innerHTML = chartTemplate(
     response.data
   );
 };
 
-let oneWeekPrior = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
-
 const chartTemplate = (chartInfo) => {
-  let intervalTwoHour = [];
+  let intervalWeekly = [];
   let open = [];
-  Object.values(chartInfo.values).map((datapoint) => {
-    let tmpDate = new Date(datapoint.datetime).toISOString();
-    if (tmpDate > oneWeekPrior) {
-      intervalTwoHour.unshift(datapoint.datetime);
-    }
+  Object.values(chartInfo["Weekly Time Series"]).map((datapoint) => {
+    open.unshift(datapoint["1. open"]);
   });
-
-  Object.values(chartInfo.values).map((datapoint) => {
-    let tmpDate = new Date(datapoint.datetime).toISOString();
-
-    if (tmpDate > oneWeekPrior) {
-      open.unshift(parseFloat(datapoint.open).toFixed(2));
-    }
+  Object.keys(chartInfo["Weekly Time Series"]).map((datapoint) => {
+    intervalWeekly.unshift(datapoint);
   });
 
   let percentChange = (
     ((open[open.length - 1] - open[0]) / open[0]) *
     100
   ).toFixed(2);
-
-  let color =
-    open[open.length - 1] - open[0] > 0 ? "rgb(0,255,0)" : "rgb(255, 0, 0)";
   percentChange = percentChange > 0 ? "+" + percentChange : percentChange;
 
-  let ctx = document.getElementById("weeklyChart").getContext("2d");
+  let color =
+    open[open.length - 1] - open[0] > 0 ? "rgb(54, 236, 189)" : "rgb(247, 108, 108)";
 
-  window.weeklyChart = new Chart(ctx, {
+  let ctx = document.getElementById("maxChart").getContext("2d");
+
+  window.maxChart = new Chart(ctx, {
     responsive: true,
     maintainAspectRatio: false,
     type: "line",
     data: {
-      labels: intervalTwoHour,
+      labels: intervalWeekly,
       datasets: [
         {
           label: "",
@@ -103,7 +91,8 @@ const chartTemplate = (chartInfo) => {
       plugins: {
         title: {
           display: true,
-          text: `Weekly: ${chartInfo.meta.symbol} (${percentChange}%)`,
+          text: `Historical: ${chartInfo["Meta Data"]["2. Symbol"]}
+ (${percentChange}%)`,
           color: color,
         },
         legend: {

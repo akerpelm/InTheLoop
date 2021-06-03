@@ -2,9 +2,10 @@ import * as Util from "./util";
 import { avAPIKey } from "../../secret";
 import axios from "axios";
 import { onTickerSelect } from "./ticker_info";
-import { onChartSelectDaily } from "./ticker_chart";
-import { onChartSelectWeekly } from "./ticker_chart_2";
-import { onChartSelectMax } from "./ticker_chart_3";
+import { onChartSelectDaily } from "./daily_ticker_chart";
+import { onChartSelectWeekly } from "./weekly_ticker_chart";
+import { onChartSelectMax } from "./max_ticker_chart";
+import { onChartSelectMonthly } from "./monthly_ticker_chart";
 
 const fetchData = async (searchQuery) => {
   const response = await axios.get("https://www.alphavantage.co/query", {
@@ -55,6 +56,7 @@ export const onInput = async (e) => {
       onTickerSelect(ticker);
       onChartSelectDaily(ticker);
       onChartSelectWeekly(ticker);
+      onChartSelectMonthly(ticker);
       onChartSelectMax(ticker);
     });
     resultsWrapper.appendChild(queryOption);

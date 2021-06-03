@@ -1,8 +1,8 @@
 import "./styles/index.scss";
 import "./scripts/search";
 import "./scripts/ticker_info";
-import "./scripts/ticker_chart";
-import "./scripts/ticker_chart_2";
+// import "./scripts/ticker_chart";
+// import "./scripts/ticker_chart_2";
 // import './images/ITL_logo.png'
 
 document.querySelector(".header").innerHTML = `

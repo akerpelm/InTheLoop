@@ -3,13 +3,17 @@
   width: 40%;
   height: 650px;
   overflow-y: scroll;
+  font-family: $body;
+
   .content {
-    background: pink;
     border-radius: 4px;
     padding: 10px;
     height: auto;
     background: #def2f1;
-    // box-shadow: -5px 5px 20px #17252a;
+    &:hover {
+      background-color: $font-color;
+      transition: 2s;
+    }
     h1 {
       font-weight: bolder;
       font-size: 20px;
@@ -19,9 +23,23 @@
       font-weight: bolder;
       margin: 5px 0;
       padding-top: 20px;
+      padding-bottom: 10px;
     }
     p {
-      margin: 5px 0;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      &:hover {
+        background-color: rgba(43, 122, 120, 0.4);
+        border-radius: 2px;
+        transition: 1s;
+        cursor: default;
+
+      }
+      span {
+        text-decoration: underline;
+        font-weight: bold;
+      }
     }
   }
 }

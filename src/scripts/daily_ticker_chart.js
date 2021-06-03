@@ -54,7 +54,7 @@ const chartTemplate = (chartInfo) => {
       : "Regular trading hours have not begun";
 
   let color =
-    open[open.length - 1] - open[0] > 0 ? "rgb(0,255,0)" : "rgb(255, 0, 0)";
+    open[open.length - 1] - open[0] > 0 ? "rgb(54, 236, 189)" : "rgb(247, 108, 108)";
   color = percentChange.length > 10 ? "rgb(254, 255, 255)" : color;
 
   let ctx = document.getElementById("dailyChart").getContext("2d");
@@ -71,7 +71,7 @@ const chartTemplate = (chartInfo) => {
           data: open,
           borderColor: color,
           borderWidth: 3,
-          pointHitRadius: 50,
+          pointHitRadius: 100,
         },
       ],
     },
