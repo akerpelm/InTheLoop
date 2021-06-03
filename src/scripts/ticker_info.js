@@ -20,7 +20,6 @@ export const onTickerSelect = async (arg) => {
 };
 
 const tickerTemplate = (tickerDetail) => {
-  console.log(tickerDetail);
   if (!tickerDetail.Name) {
     return `
     <div class="content">

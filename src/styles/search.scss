@@ -1,26 +1,25 @@
-// .input {
-//   box-shadow: inset 0 1px 2px rgb(10 10 10 / 10%);
-//   max-width: 100%;
-//   width: 100px;
-//   background-color: white;
-//   border-color: #dbdbdb;
-//   border-radius: 4px;
-//   color: #363636;
-//   align-items: center;
-//   border: 1px solid black;
-//   border-radius: 4px;
-//   display: inline-flex;
-//   font-size: 16px;
-//   height: 10px;
-//   justify-content: flex-start;
-//   line-height: 1.5;
-//   padding-bottom: 10px;
-//   padding-left: 10px;
-//   padding-right: 10px;
-//   padding-top: 10px;
-//   position: relative;
-//   vertical-align: top;
-// }
+.input {
+  box-shadow: inset 0 1px 2px rgb(10 10 10 / 10%);
+  margin-top: 10px;
+  margin-left: 10px;
+  max-width: 100%;
+  width: 100px;
+  background-color: $primary-light;
+  border-color: #dbdbdb;
+  border-radius: 4px;
+  color: $font-color-2;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 4px;
+  display: inline-flex;
+  font-size: 16px;
+  height: 10px;
+  justify-content: flex-start;
+  line-height: 1.5;
+  padding: 10px;
+  position: relative;
+  vertical-align: top;
+}
 
 .dropdown {
   display: inline-flex;
@@ -68,4 +67,11 @@ a.dropdown-item {
 
 .dropdown.is-active .dropdown-menu {
   display: block;
+}
+
+
+
+.search {
+  display: flex;
+  justify-content: space-between;
 }

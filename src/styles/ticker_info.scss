@@ -1,10 +1,14 @@
 .single-ticker {
+  margin-top: 20px;
   padding: 20px 10px;
   width: 40%;
+  height: 90vh;
+  overflow-y: scroll;
   .content {
     background: pink;
     border-radius: 4px;
     padding: 10px;
+    height: auto;
     h1 {
       font-weight: bolder;
       font-size: 20px;
@@ -13,9 +17,12 @@
     h4 {
       font-weight: bolder;
       margin: 5px 0;
+      padding-top: 20px;
     }
     p {
       margin: 5px 0;
     }
   }
+  
 }
+
