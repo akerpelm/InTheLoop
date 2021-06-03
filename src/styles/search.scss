@@ -3,7 +3,7 @@
   margin-top: 10px;
   margin-left: 10px;
   max-width: 100%;
-  width: 100px;
+  width: 250px;
   background-color: $primary-light;
   border-color: #dbdbdb;
   border-radius: 4px;
@@ -22,9 +22,13 @@
 }
 
 .dropdown {
-  display: inline-flex;
-  position: relative;
+  // display: inline-flex;
+  // position: relative;
   vertical-align: top;
+  position: absolute;
+  vertical-align: top;
+  top: 90px;
+  left: 10px;
 }
 
 .dropdown-menu {
@@ -68,8 +72,6 @@ a.dropdown-item {
 .dropdown.is-active .dropdown-menu {
   display: block;
 }
-
-
 
 .search {
   display: flex;

@@ -1,14 +1,15 @@
 .single-ticker {
-  margin-top: 20px;
-  padding: 20px 10px;
+  padding: 0 10px;
   width: 40%;
-  height: 90vh;
+  height: 650px;
   overflow-y: scroll;
   .content {
     background: pink;
     border-radius: 4px;
     padding: 10px;
     height: auto;
+    background: #def2f1;
+    // box-shadow: -5px 5px 20px #17252a;
     h1 {
       font-weight: bolder;
       font-size: 20px;
@@ -23,6 +24,4 @@
       margin: 5px 0;
     }
   }
-  
 }
-

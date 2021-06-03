@@ -48,6 +48,8 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .header-logo-div {
@@ -61,7 +63,6 @@
     color: $font-color;
     text-decoration: none;
      &:hover {
-      //   transition: 1s;
       border: none;
       animation: pulse 4s infinite;
       animation-timing-function: linear;
@@ -86,7 +87,7 @@
   i {
     font-size: 20px;
     padding: 10px 10px 0px 10px;
-    text-decoration: none !important;
+    text-decoration: none;
     pointer-events: none;
     
   }

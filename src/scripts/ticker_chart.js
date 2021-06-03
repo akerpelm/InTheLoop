@@ -3,6 +3,9 @@ import axios from "axios";
 
 export const onChartSelectDaily = async (arg) => {
   let tickerSymbol = arg["1. symbol"];
+  if (tickerSymbol) {
+    document.querySelector(".chart").classList.add("is-active-chart");
+  }
   const response = await axios.get("https://api.twelvedata.com/time_series", {
     params: {
       symbol: tickerSymbol,
@@ -42,9 +45,17 @@ const chartTemplate = (chartInfo) => {
     100
   ).toFixed(2);
 
+  percentChange =
+    percentChange > 0 ? "+" + percentChange + "%" : percentChange + "%";
+
+  percentChange =
+    percentChange !== "NaN%"
+      ? percentChange
+      : "Regular trading hours have not begun";
+
   let color =
     open[open.length - 1] - open[0] > 0 ? "rgb(0,255,0)" : "rgb(255, 0, 0)";
-  percentChange = percentChange > 0 ? "+" + percentChange : percentChange;
+  color = percentChange.length > 10 ? "rgb(254, 255, 255)" : color;
 
   let ctx = document.getElementById("dailyChart").getContext("2d");
 
@@ -99,7 +110,7 @@ const chartTemplate = (chartInfo) => {
       plugins: {
         title: {
           display: true,
-          text: `Daily: ${chartInfo.meta.symbol} (${percentChange}%)`,
+          text: `Daily: ${chartInfo.meta.symbol} (${percentChange})`,
           color: color,
         },
         legend: {
