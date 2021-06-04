@@ -1,10 +1,14 @@
 import "./styles/index.scss";
 import "./scripts/search";
 import { modalInformation } from "./scripts/modal";
+import { onInput } from './scripts/search'
+import * as Util from "./scripts/util";
 
 document.querySelector(".header").innerHTML = `
+<div class="header-btns">
 <button id="help-modal-btn">Wiki</button>
-<button id="search-modal-btn">Wiki</button>
+<button id="search-btn">Demo</button>
+</div>
 <div id="help-modal" class="modal">
 <div class="modal-content">
 <span class="modal-close">&times;</span>
@@ -40,6 +44,29 @@ window.onclick = (e) => {
 };
 
 document.querySelector(".modal-information").innerHTML = modalInformation;
+
+const demoText = document.querySelector(".input");
+const demoWriter = "Energy Fuels";
+let idx = 1;
+
+document
+  .querySelector("#search-btn")
+  .addEventListener("click", () => setInterval(writeText, 200));
+
+const writeText = () => {
+  if (idx <= demoWriter.length) {
+    demoText.value = demoWriter.slice(0, idx);
+    demoText.innerHTML = `<p>${demoText.value}</p>`
+    idx++;
+    debugger
+    
+    demoText.addEventListener("change", Util.debounce(onInput));
+    
+  }
+};
+
+
+
 
 let tabButtons = document.querySelectorAll(
   ".tab-container .tab-button-container button"
