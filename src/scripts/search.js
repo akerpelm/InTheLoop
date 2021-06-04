@@ -6,6 +6,7 @@ import { onChartSelectDaily } from "./daily_ticker_chart";
 import { onChartSelectWeekly } from "./weekly_ticker_chart";
 import { onChartSelectMax } from "./max_ticker_chart";
 import { onChartSelectMonthly } from "./monthly_ticker_chart";
+import { onChartSelectYearly } from "./yearly_ticker_chart";
 
 const fetchData = async (searchQuery) => {
   const response = await axios.get("https://www.alphavantage.co/query", {
@@ -57,6 +58,7 @@ export const onInput = async (e) => {
       onChartSelectDaily(ticker);
       onChartSelectWeekly(ticker);
       onChartSelectMonthly(ticker);
+      onChartSelectYearly(ticker);
       onChartSelectMax(ticker);
     });
     resultsWrapper.appendChild(queryOption);

@@ -3,24 +3,36 @@
   width: 40%;
   height: 650px;
   overflow-y: scroll;
-  font-family: $body;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  // font-family: $body;
 
   .content {
     border-radius: 4px;
     padding: 10px;
     height: auto;
     background: #def2f1;
-    &:hover {
-      background-color: $font-color;
-      transition: 2s;
-    }
+    // &:hover {
+    //   background-color: $font-color;
+    //   transition: 2s;
+    // }
     h1 {
-      font-weight: bolder;
+      color: $primary-dark;
+      font-weight: bold;
       font-size: 20px;
       margin-bottom: 10px;
+      // text-decoration: underline;
+      text-align: center;
+      font-family: $header;
+      .info-name {
+        text-decoration: underline;
+      }
     }
     h4 {
-      font-weight: bolder;
+      color: $primary;
+      font-family: $header;
+      text-align: center;
+      font-weight: bold;
+      text-decoration: underline;
       margin: 5px 0;
       padding-top: 20px;
       padding-bottom: 10px;
@@ -30,15 +42,48 @@
       display: flex;
       justify-content: space-between;
       &:hover {
-        background-color: rgba(43, 122, 120, 0.4);
+        background-color: rgba(43, 122, 120, 0.08);
         border-radius: 2px;
-        transition: 1s;
+        transition: 2s;
         cursor: default;
-
       }
       span {
         text-decoration: underline;
         font-weight: bold;
+      }
+    }
+    a {
+      background: $font-color-2;
+      position: absolute;
+      bottom: 3px;
+      left: 0px;
+      border: none;
+      font-weight: bold;
+      color: $font-color;
+      border-radius: 10px;
+      margin: 0 0 0 10px;
+      padding: 10px;
+      cursor: pointer;
+      &:hover {
+        //   transition: 1s;
+        border: none;
+        animation: pulse 4s infinite;
+        animation-timing-function: linear;
+      }
+      @keyframes pulse {
+        0% {
+          // background: $primary-dark;
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1);
+          background: $primary;
+          color: $font-color-2;
+        }
+        100% {
+          //   background-color: $font-color-2;
+          transform: scale(1);
+        }
       }
     }
   }

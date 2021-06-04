@@ -1,56 +1,54 @@
 import { tdAPIKey } from "../../secret";
 import axios from "axios";
 
-export const onChartSelectMonthly = async (arg) => {
+export const onChartSelectYearly = async (arg) => {
   let tickerSymbol = arg["1. symbol"];
-    console.log(tickerSymbol, "monthly");
-
   const response = await axios.get("https://api.twelvedata.com/time_series", {
     params: {
       symbol: tickerSymbol,
-      interval: "1h",
-      outputsize: "200",
+      interval: "8h",
+      outputsize: "500",
       apikey: tdAPIKey,
       source: "docs",
     },
   });
 
-  if (window.monthlyChart.id !== "monthlyChart") monthlyChart.destroy();
+  if (window.yearlyChart.id !== "yearlyChart") yearlyChart.destroy();
 
-  document.querySelector(".ticker-chart-monthly").innerHTML = chartTemplate(
+  document.querySelector(".ticker-chart-yearly").innerHTML = chartTemplate(
     response.data
   );
 };
+
+let oneYearPrior = new Date(
+  Date.now() - 365 * 24 * 60 * 60 * 1000
+).toISOString();
 
 const chartTemplate = (chartInfo) => {
   let intervalEightHour = [];
   let open = [];
   Object.values(chartInfo.values).map((datapoint) => {
-    let tmpDate = new Date(datapoint.datetime);
-    if (
-      //   tmpDate.getDay() >= new Date(Date.now()).getDay() &&
-      tmpDate.getMonth() >=
-      new Date(Date.now()).getMonth() - 1
-    ) {
-      open.unshift(parseFloat(datapoint.open).toFixed(2));
+    let tmpDate = new Date(datapoint.datetime).toISOString();
+    if (tmpDate > oneYearPrior) {
       intervalEightHour.unshift(datapoint.datetime.slice(0, 10));
+      open.unshift(parseFloat(datapoint.open).toFixed(2));
     }
   });
+
   let percentChange = (
     ((open[open.length - 1] - open[0]) / open[0]) *
     100
   ).toFixed(2);
 
-  percentChange =
-    percentChange > 0 ? "+" + percentChange + "%" : percentChange + "%";
   let color =
     open[open.length - 1] - open[0] > 0
       ? "rgb(54, 236, 189)"
       : "rgb(247, 108, 108)";
+  percentChange = percentChange > 0 ? "+" + percentChange : percentChange;
 
-  let ctx = document.getElementById("monthlyChart").getContext("2d");
+  let ctx = document.getElementById("yearlyChart").getContext("2d");
 
-  window.monthlyChart = new Chart(ctx, {
+  window.yearlyChart = new Chart(ctx, {
     responsive: true,
     maintainAspectRatio: false,
     type: "line",
@@ -67,8 +65,6 @@ const chartTemplate = (chartInfo) => {
       ],
     },
     options: {
-      maintainAspectRatio: false,
-
       elements: {
         line: {
           borderCapStyle: "round",
@@ -78,6 +74,7 @@ const chartTemplate = (chartInfo) => {
           radius: 0,
         },
       },
+      maintainAspectRatio: false,
       scales: {
         grid: {
           color: "rgba(0,0,0,0)",
@@ -94,6 +91,7 @@ const chartTemplate = (chartInfo) => {
             borderColor: "rgba(0,0,0,0)",
             tickColor: "rgba(0,0,0,0)",
           },
+          display: false,
           ticks: {
             display: false,
           },
@@ -102,7 +100,7 @@ const chartTemplate = (chartInfo) => {
       plugins: {
         title: {
           display: true,
-          text: `Monthly: ${chartInfo.meta.symbol} (${percentChange})`,
+          text: `Yearly: ${chartInfo.meta.symbol} (${percentChange}%)`,
           color: color,
         },
         legend: {

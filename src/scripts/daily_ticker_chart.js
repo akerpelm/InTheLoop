@@ -3,14 +3,16 @@ import axios from "axios";
 
 export const onChartSelectDaily = async (arg) => {
   let tickerSymbol = arg["1. symbol"];
+    console.log(tickerSymbol, "daily");
+
   if (tickerSymbol) {
     document.querySelector(".chart").classList.add("is-active-chart");
   }
   const response = await axios.get("https://api.twelvedata.com/time_series", {
     params: {
       symbol: tickerSymbol,
-      interval: "15min",
-      output: "200",
+      interval: "1min",
+      outputsize: "670",
       apikey: tdAPIKey,
       source: "docs",
     },
@@ -30,15 +32,15 @@ const chartTemplate = (chartInfo) => {
     let tmpDate = new Date(datapoint.datetime);
     if (tmpDate.getDay() == new Date(Date.now()).getDay()) {
       intervalFifteen.unshift(datapoint.datetime.slice(11));
-    }
-  });
-
-  Object.values(chartInfo.values).map((datapoint) => {
-    let tmpDate = new Date(datapoint.datetime);
-    if (tmpDate.getDay() == new Date(Date.now()).getDay()) {
       open.unshift(parseFloat(datapoint.open).toFixed(2));
     }
   });
+
+  // Object.values(chartInfo.values).map((datapoint) => {
+  //   let tmpDate = new Date(datapoint.datetime);
+  //   if (tmpDate.getDay() == new Date(Date.now()).getDay()) {
+  //   }
+  // });
 
   let percentChange = (
     ((open[open.length - 1] - open[0]) / open[0]) *

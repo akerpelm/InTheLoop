@@ -1,0 +1,77 @@
+.modal-content {
+  background: $primary-light;
+  border-radius: 8px;
+}
+
+.modal-close {
+  cursor: pointer;
+}
+.wiki-title {
+  color: $primary-dark;
+  font-weight: bold;
+}
+.modal-information {
+  font-size: 20px;
+  font-family: $body;
+  text-decoration: none;
+  color: $font-color-2;
+  li,
+  p {
+    padding: 10px 0;
+  }
+  a {
+    text-decoration: none;
+    color: $primary-dark;
+  }
+
+  h4 {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 25px 0 25px 0;
+    text-align: center;
+    color: $primary-dark;
+  }
+  h5 {
+    padding: 10px 0;
+    font-weight: bold;
+  }
+  .components {
+    padding-bottom: 10px;
+  }
+  .wiki-components {
+    padding-bottom: 50px;
+  }
+  .wiki-contents li {
+    padding: 0px;
+  }
+  .wiki-header {
+    margin-top: 10px;
+  }
+  .ltr-li {
+    font-weight: bold;
+    color: $primary-dark;
+  }
+  .ltr-span {
+    color: $font-color-2;
+    font-weight: normal;
+    text-decoration: none;
+  }
+  #wiki-contact {
+    padding-bottom: 10px;
+  }
+  .wiki-links {
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    li {
+      padding: 0;
+      margin-bottom: 10px;
+      a {
+        color: $font-color-2;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

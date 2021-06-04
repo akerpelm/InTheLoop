@@ -4,13 +4,19 @@ import axios from "axios";
 export const onChartSelectMax = async (arg) => {
   let tickerSymbol = arg["1. symbol"];
   console.log(tickerSymbol)
-  const response = await axios.get("https://www.alphavantage.co/query", {
-    params: {
-      function: "TIME_SERIES_WEEKLY",
-      symbol: tickerSymbol,
-      apikey: avAPIKey,
-    },
-  });
+ const response = await axios.get("https://api.twelvedata.com/time_series", {
+   params: {
+     symbol: tickerSymbol,
+     interval: "1week",
+     outputsize: "5000",
+     apikey: tdAPIKey,
+     source: "docs",
+   },
+ });
+
+   if (response.data.Error) {
+     return [];
+   }
   if (window.maxChart.id !== "maxChart") maxChart.destroy();
 
   document.querySelector(".ticker-chart-max").innerHTML = chartTemplate(
@@ -21,13 +27,15 @@ export const onChartSelectMax = async (arg) => {
 const chartTemplate = (chartInfo) => {
   let intervalWeekly = [];
   let open = [];
-  Object.values(chartInfo["Weekly Time Series"]).map((datapoint) => {
-    open.unshift(datapoint["1. open"]);
-  });
-  Object.keys(chartInfo["Weekly Time Series"]).map((datapoint) => {
-    intervalWeekly.unshift(datapoint);
-  });
 
+  Object.values(chartInfo.values).map((datapoint) => {
+    open.unshift(datapoint.open);
+    intervalWeekly.unshift(datapoint.datetime);
+  });
+  // Object.keys(chartInfo.values).map((datapoint) => {
+  //   debugger
+  // });
+  
   let percentChange = (
     ((open[open.length - 1] - open[0]) / open[0]) *
     100
@@ -91,8 +99,7 @@ const chartTemplate = (chartInfo) => {
       plugins: {
         title: {
           display: true,
-          text: `Historical: ${chartInfo["Meta Data"]["2. Symbol"]}
- (${percentChange}%)`,
+          text: `Max: ${chartInfo.meta.symbol} (${percentChange}%)`,
           color: color,
         },
         legend: {
