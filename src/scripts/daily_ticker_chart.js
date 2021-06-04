@@ -59,7 +59,6 @@ const chartTemplate = (chartInfo) => {
       ? percentChange
       : "Regular trading hours have not begun";
 
-  console.log(percentChange);
   let color =
     open[open.length - 1] - open[0] > 0
       ? "rgb(54, 236, 189)"

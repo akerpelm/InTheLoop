@@ -57,9 +57,7 @@ const writeText = () => {
   if (idx <= demoWriter.length) {
     demoText.value = demoWriter.slice(0, idx);
     demoText.innerHTML = `<p>${demoText.value}</p>`
-    idx++;
-    debugger
-    
+    idx++;    
     demoText.addEventListener("change", Util.debounce(onInput));
     
   }
@@ -72,7 +70,6 @@ let tabButtons = document.querySelectorAll(
   ".tab-container .tab-button-container button"
 );
 let tabPanels = document.querySelectorAll(".tab-container .tab-panel");
-console.log(tabPanels);
 
 export const showPanel = (idx) => {
   tabPanels.forEach((panel) => {
