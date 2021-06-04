@@ -81,7 +81,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      favicon: "public/images/favicon-16x16.png",
+      favicon: "./public/images/favicon-16x16.png",
     }),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output

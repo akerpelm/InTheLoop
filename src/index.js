@@ -1,7 +1,7 @@
 import "./styles/index.scss";
 import "./scripts/search";
 import { modalInformation } from "./scripts/modal";
-import { onInput } from './scripts/search'
+import { onInput } from "./scripts/search";
 import * as Util from "./scripts/util";
 
 document.querySelector(".header").innerHTML = `
@@ -44,27 +44,38 @@ window.onclick = (e) => {
 };
 
 document.querySelector(".modal-information").innerHTML = modalInformation;
-
+let demoArray = [
+  "PSTH",
+  "PLTR",
+  "Mind Medicine",
+  "UUUU",
+  "Energy Fuels",
+  "ATOS",
+  "Facebook",
+  "MSFT",
+  "Apple",
+];
 const demoText = document.querySelector(".input");
-const demoWriter = "Energy Fuels";
+const demoWriter = demoArray[Math.floor(Math.random() * demoArray.length)];
 let idx = 1;
 
 document
   .querySelector("#search-btn")
-  .addEventListener("click", () => setInterval(writeText, 200));
+  .addEventListener("click", () => setInterval(writeText, 300));
 
-const writeText = () => {
+const writeText = async () => {
   if (idx <= demoWriter.length) {
     demoText.value = demoWriter.slice(0, idx);
-    demoText.innerHTML = `<p>${demoText.value}</p>`
-    idx++;    
-    demoText.addEventListener("change", Util.debounce(onInput));
-    
+
+    const event = new Event("event");
+    demoText.addEventListener("event", Util.debounce(onInput));
+    demoText.dispatchEvent(event);
+
+    idx++;
+  } else {
+    setTimeout(() => (demoText.value = ""), 10000);
   }
 };
-
-
-
 
 let tabButtons = document.querySelectorAll(
   ".tab-container .tab-button-container button"
