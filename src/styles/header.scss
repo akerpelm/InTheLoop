@@ -3,7 +3,8 @@
   flex-direction: row;
   justify-content: space-between;
   font-family: $header;
-  margin-top: 10px;
+  padding-top: 10px;
+  background-color: $font-color-2;
 
   button {
     background: $font-color-2;

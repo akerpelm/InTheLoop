@@ -76,4 +76,6 @@ a.dropdown-item {
 .search {
   display: flex;
   justify-content: space-between;
+  padding-bottom: 5px;
+  background-color: $font-color-2;
 }

@@ -73,7 +73,7 @@ const writeText = async () => {
 
     idx++;
   } else {
-    setTimeout(() => (demoText.value = ""), 10000);
+    setTimeout(() => (demoText.value = ""), 60000);
   }
 };
 
