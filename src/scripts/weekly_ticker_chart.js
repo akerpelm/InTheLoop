@@ -3,7 +3,6 @@ import axios from "axios";
 
 export const onChartSelectWeekly = async (arg) => {
   let tickerSymbol = arg["1. symbol"];
-  console.log(tickerSymbol, 'weeekly')
   const response = await axios.get("https://api.twelvedata.com/time_series", {
     params: {
       symbol: tickerSymbol,

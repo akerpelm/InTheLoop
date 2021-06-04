@@ -3,7 +3,6 @@ import axios from "axios";
 
 export const onChartSelectDaily = async (arg) => {
   let tickerSymbol = arg["1. symbol"];
-    console.log(tickerSymbol, "daily");
 
   if (tickerSymbol) {
     document.querySelector(".chart").classList.add("is-active-chart");
@@ -55,9 +54,10 @@ const chartTemplate = (chartInfo) => {
       ? percentChange
       : "Regular trading hours have not begun";
 
+      console.log(percentChange)
   let color =
     open[open.length - 1] - open[0] > 0 ? "rgb(54, 236, 189)" : "rgb(247, 108, 108)";
-  color = percentChange.length > 10 ? "rgb(254, 255, 255)" : color;
+  color = percentChange.length > 10 ? "rgb(54, 236, 189)" : color;
 
   let ctx = document.getElementById("dailyChart").getContext("2d");
 
