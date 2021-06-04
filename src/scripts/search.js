@@ -24,7 +24,7 @@ const fetchData = async (searchQuery) => {
 
 const search = document.querySelector(".search");
 search.innerHTML = `
-  <input class="input" placeholder="Search"/>
+  <input class="input search-input" placeholder="Search"/>
   <div class="dropdown">
     <div class="dropdown-menu">
       <div class="dropdown-content results">
@@ -33,7 +33,7 @@ search.innerHTML = `
   </div>
   `;
 
-const input = document.querySelector("input");
+const input = document.querySelector(".input");
 const dropdown = document.querySelector(".dropdown");
 const resultsWrapper = document.querySelector(".results");
 

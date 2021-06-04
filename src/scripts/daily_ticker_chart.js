@@ -19,9 +19,11 @@ export const onChartSelectDaily = async (arg) => {
       source: "docs",
     },
   });
-
+  if (response.data.status === "error") {
+    console.log("API Call Limit Exceeded.");
+    return [];
+  }
   if (window.dailyChart.id !== "dailyChart") dailyChart.destroy();
-
   document.querySelector(".ticker-chart-daily").innerHTML = chartTemplate(
     response.data
   );
@@ -122,8 +124,8 @@ const chartTemplate = (chartInfo) => {
           font: {
             family:
               "Cambria, 'Cochin', 'Georgia', 'Times', 'Times New Roman', serif",
+              size: 18,
           },
-          size: 28,
         },
         legend: {
           labels: {

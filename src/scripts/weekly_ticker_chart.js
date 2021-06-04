@@ -12,6 +12,10 @@ export const onChartSelectWeekly = async (arg) => {
       source: "docs",
     },
   });
+    if (response.data.status === "error") {
+      console.log("API Call Limit Exceeded.");
+      return [];
+    }
 
   if (window.weeklyChart.id !== "weeklyChart") weeklyChart.destroy();
 
@@ -105,6 +109,11 @@ const chartTemplate = (chartInfo) => {
           display: true,
           text: `Weekly: ${chartInfo.meta.symbol} (${percentChange}%)`,
           color: color,
+          font: {
+            family:
+              "Cambria, 'Cochin', 'Georgia', 'Times', 'Times New Roman', serif",
+            size: 18,
+          },
         },
         legend: {
           labels: {

@@ -12,6 +12,10 @@ export const onChartSelectYearly = async (arg) => {
       source: "docs",
     },
   });
+    if (response.data.status === "error") {
+      console.log("API Call Limit Exceeded.");
+      return [];
+    }
 
   if (window.yearlyChart.id !== "yearlyChart") yearlyChart.destroy();
 
@@ -100,8 +104,13 @@ const chartTemplate = (chartInfo) => {
       plugins: {
         title: {
           display: true,
-          text: `Yearly: ${chartInfo.meta.symbol} (${percentChange}%)`,
+          text: `Yearly${chartInfo.meta.symbol} (${percentChange}%)`,
           color: color,
+          font: {
+            family:
+              "Cambria, 'Cochin', 'Georgia', 'Times', 'Times New Roman', serif",
+            size: 18,
+          },
         },
         legend: {
           labels: {

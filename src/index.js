@@ -1,12 +1,10 @@
 import "./styles/index.scss";
 import "./scripts/search";
-// import "./scripts/ticker_info";
 import { modalInformation } from "./scripts/modal";
-// import "./scripts/ticker_chart";
-// import "./scripts/ticker_chart_2";
 
 document.querySelector(".header").innerHTML = `
 <button id="help-modal-btn">Wiki</button>
+<button id="search-modal-btn">Wiki</button>
 <div id="help-modal" class="modal">
 <div class="modal-content">
 <span class="modal-close">&times;</span>
@@ -38,14 +36,14 @@ span.onclick = () => {
 window.onclick = (e) => {
   if (e.target == modal) {
     modal.style.display = "none";
-    // removeHash();
   }
 };
 
 document.querySelector(".modal-information").innerHTML = modalInformation;
 
-//tabs
-
+let tabButtons = document.querySelectorAll(
+  ".tab-container .tab-button-container button"
+);
 let tabPanels = document.querySelectorAll(".tab-container .tab-panel");
 console.log(tabPanels);
 

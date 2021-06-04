@@ -14,6 +14,11 @@ export const onChartSelectMonthly = async (arg) => {
     },
   });
 
+  if (response.data.status === "error") {
+    console.log("API Call Limit Exceeded.");
+    return [];
+  }
+
   if (window.monthlyChart.id !== "monthlyChart") monthlyChart.destroy();
 
   document.querySelector(".ticker-chart-monthly").innerHTML = chartTemplate(
@@ -103,6 +108,11 @@ const chartTemplate = (chartInfo) => {
           display: true,
           text: `Monthly: ${chartInfo.meta.symbol} (${percentChange})`,
           color: color,
+          font: {
+            family:
+              "Cambria, 'Cochin', 'Georgia', 'Times', 'Times New Roman', serif",
+            size: 18,
+          },
         },
         legend: {
           labels: {
