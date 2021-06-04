@@ -1,9 +1,10 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin")
 const outputDir = "./dist";
 
 module.exports = {
-  entry: path.resolve(__dirname, "src", "index.js"), 
+  entry: path.resolve(__dirname, "src", "index.js"),
   output: {
     path: path.join(__dirname, outputDir),
     filename: "[name].js",
@@ -68,10 +69,10 @@ module.exports = {
           },
           "css-loader",
           {
-            loader: "sass-loader", 
+            loader: "sass-loader",
             options: {
-              implementation: require('sass')
-            }
+              implementation: require("sass"),
+            },
           },
           "postcss-loader",
         ],
@@ -79,6 +80,9 @@ module.exports = {
     ],
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      favicon: "public/images/favicon-16x16.png",
+    }),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // all options are optional
