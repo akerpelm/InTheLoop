@@ -35,13 +35,16 @@
         transform: scale(1);
       }
     }
+    &:active {
+      background-color: $primary;
+      color: $font-color-2;
+    }
   }
 }
 
 .app-title {
   font-weight: 700;
   font-size: 38px;
-
 }
 
 .columns {
@@ -62,7 +65,7 @@
   a {
     color: $font-color;
     text-decoration: none;
-     &:hover {
+    &:hover {
       border: none;
       animation: pulse 4s infinite;
       animation-timing-function: linear;
@@ -82,18 +85,15 @@
         transform: scale(1);
       }
     }
-
   }
   i {
     font-size: 20px;
     padding: 10px 10px 0px 10px;
     text-decoration: none;
     pointer-events: none;
-    
   }
   // vertical-align: bottom;
 }
-
 
 //modal
 
@@ -106,7 +106,7 @@
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: scroll; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(43, 122, 120, 0.8); /* Black w/ opacity */
 }
 

@@ -40,19 +40,44 @@ window.onclick = (e) => {
     modal.style.display = "none";
     // removeHash();
   }
-
 };
 
 document.querySelector(".modal-information").innerHTML = modalInformation;
 
-// let anchor = document.querySelector("#top-btn");
-// let removeHash = () => {
-//   setTimeout(() => {
-//     window.location.href = window.location.origin;
-//   }, 500);
-// };
-// anchor.onclick = () => {
-// };
+//tabs
+
+let tabPanels = document.querySelectorAll(".tab-container .tab-panel");
+console.log(tabPanels);
+
+export const showPanel = (idx) => {
+  tabPanels.forEach((panel) => {
+    panel.style.display = "none";
+  });
+  tabPanels[idx].style.display = "block";
+};
+
+showPanel(0);
+
+let tab1 = document.getElementById("tab-btn-1");
+tab1.onclick = () => {
+  showPanel(0);
+};
+let tab2 = document.getElementById("tab-btn-2");
+tab2.onclick = () => {
+  showPanel(1);
+};
+let tab3 = document.getElementById("tab-btn-3");
+tab3.onclick = () => {
+  showPanel(2);
+};
+let tab4 = document.getElementById("tab-btn-4");
+tab4.onclick = () => {
+  showPanel(3);
+};
+let tab5 = document.getElementById("tab-btn-5");
+tab5.onclick = () => {
+  showPanel(4);
+};
 
 {
   //hamburger

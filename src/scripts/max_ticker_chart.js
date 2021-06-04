@@ -31,9 +31,6 @@ const chartTemplate = (chartInfo) => {
     open.unshift(datapoint.open);
     intervalWeekly.unshift(datapoint.datetime);
   });
-  // Object.keys(chartInfo.values).map((datapoint) => {
-  //   debugger
-  // });
   
   let percentChange = (
     ((open[open.length - 1] - open[0]) / open[0]) *

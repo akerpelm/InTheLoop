@@ -5,6 +5,9 @@ export const onChartSelectDaily = async (arg) => {
   let tickerSymbol = arg["1. symbol"];
 
   if (tickerSymbol) {
+    const tabContainer = document.querySelector(".tab-container");
+    tabContainer.style.visibility = "visible";
+
     document.querySelector(".chart").classList.add("is-active-chart");
   }
   const response = await axios.get("https://api.twelvedata.com/time_series", {
@@ -54,9 +57,11 @@ const chartTemplate = (chartInfo) => {
       ? percentChange
       : "Regular trading hours have not begun";
 
-      console.log(percentChange)
+  console.log(percentChange);
   let color =
-    open[open.length - 1] - open[0] > 0 ? "rgb(54, 236, 189)" : "rgb(247, 108, 108)";
+    open[open.length - 1] - open[0] > 0
+      ? "rgb(54, 236, 189)"
+      : "rgb(247, 108, 108)";
   color = percentChange.length > 10 ? "rgb(54, 236, 189)" : color;
 
   let ctx = document.getElementById("dailyChart").getContext("2d");
@@ -114,6 +119,11 @@ const chartTemplate = (chartInfo) => {
           display: true,
           text: `Daily: ${chartInfo.meta.symbol} (${percentChange})`,
           color: color,
+          font: {
+            family:
+              "Cambria, 'Cochin', 'Georgia', 'Times', 'Times New Roman', serif",
+          },
+          size: 28,
         },
         legend: {
           labels: {
