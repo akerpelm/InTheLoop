@@ -7,6 +7,7 @@ export const onChartSelectDaily = async (arg) => {
   if (tickerSymbol) {
     const tabContainer = document.querySelector(".tab-container");
     tabContainer.style.visibility = "visible";
+    document.querySelectorAll(".single-ticker").style.overflowY = "scroll" 
 
     document.querySelector(".chart").classList.add("is-active-chart");
   }

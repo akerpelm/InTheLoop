@@ -104,7 +104,7 @@ const chartTemplate = (chartInfo) => {
       plugins: {
         title: {
           display: true,
-          text: `Yearly${chartInfo.meta.symbol} (${percentChange}%)`,
+          text: `Yearly: ${chartInfo.meta.symbol} (${percentChange}%)`,
           color: color,
           font: {
             family:
