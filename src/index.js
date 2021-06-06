@@ -49,9 +49,9 @@ let demoArray = [
   "PLTR",
   "Mind Medicine",
   "UUUU",
+  "Keurig",
   "Energy Fuels",
   "ATOS",
-  "Facebook",
   "MSFT",
   "Apple",
 ];
