@@ -6,7 +6,7 @@ export const debounce = (cb) => {
     }
     timeoutId = setTimeout(() => {
       cb.apply(null, args);
-    }, 500);
+    }, 300);
   };
 };
 

@@ -75,9 +75,10 @@ const writeText = async () => {
     demoText.dispatchEvent(event);
 
     idx++;
-  } else {
-    setTimeout(() => (demoText.value = ""), 60000);
   }
+  // else {
+  //   setTimeout(() => (demoText.value = ""), 60000);
+  // }
 };
 
 //menu
@@ -86,15 +87,15 @@ document.querySelector(".splash").innerHTML = `
 </br>
 <p>To get started, please click <a class="splash-wiki-link" href="">wiki</a> page to familiarize yourself with the application.</p>
 </br>
-<p>Once ready, search for a ticker, or click the demo button to generate a random ticker to search!</p>`;
+<p>Once ready, search for a ticker, or click the demo button to generate a random ticker to search!</p>
+</br>
+<p>At any point, click the logo at the top of the page to return to the home page.</p>`;
 
 const wikiLink = document.querySelector(".splash-wiki-link");
 
 wikiLink.addEventListener("mousedown", () => {
   btn.click();
 });
-
-
 
 let tabButtons = document.querySelectorAll(
   ".tab-container .tab-button-container button"

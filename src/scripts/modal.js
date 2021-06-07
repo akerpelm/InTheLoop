@@ -52,6 +52,7 @@ export const modalInformation = `<div>
   <h4 id="wiki-"limitations">Limitations</h4>
   <ul>
       <li>A few limitations were idenitfied during the creation of this application:</li>
+      <li class="first-lim">Currently, the maximum API calls per minute is 8. At least one is made when searching for a ticker, and currently 5 are made to retrieve information for each individual chart. This means that no more than one request can be made per minute.
       <li>The APIs used to gather data are free versions, meaning there is a limit to the requests that can be made to data per day. As a result, the application does not show realtime data, after-hours trading, or all of the information that is desired on the chart (trading volume, TA). This would involve more requests than allowed on a free plan of the APIs.</li>
       <li>Certain ETFs and non-US listed securities do not display data, resulting in blank information pages and charts. Error handling has been implemented to show an error message if this occurs.</li>
       <li>Charts do not account for historical stock splits, a chart may show what appears to be a sudden correction/price decline.</li>
