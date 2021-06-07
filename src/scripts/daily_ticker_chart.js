@@ -8,6 +8,8 @@ export const onChartSelectDaily = async (arg) => {
     const tabContainer = document.querySelector(".tab-container");
     tabContainer.style.visibility = "visible";
     document.querySelector(".single-ticker").style.overflowY = "scroll" 
+    const splash = document.querySelector(".splash")
+    splash.style.display = "none"
 
     document.querySelector(".chart").classList.add("is-active-chart");
   }

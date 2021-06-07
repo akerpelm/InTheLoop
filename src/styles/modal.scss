@@ -39,13 +39,22 @@
     padding-bottom: 10px;
   }
   .wiki-components {
-    padding-bottom: 50px;
+    padding-bottom: 20px;
   }
   .wiki-contents li {
     padding: 0px;
+    a {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
   .wiki-header {
     margin-top: 10px;
+    .wiki-header-title {
+      font-weight: bold;
+      // text-decoration: underline;
+    }
   }
   .ltr-li {
     font-weight: bold;

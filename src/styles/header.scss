@@ -1,3 +1,26 @@
+.title {
+    position:absolute;
+    text-align: center;
+    left: 27%;
+    width: 50%;
+    top: 40px;
+    padding-top: 10px;   
+    font-size: 20px;
+    font-weight: bold;
+    color: $primary-light;
+    font-family: $header;
+    
+}
+
+
+.title-alt {
+    color: $primary-light;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: $header;
+}
+
+
 .header {
   display: flex;
   flex-direction: row;
@@ -46,6 +69,7 @@
 .app-title {
   font-weight: 700;
   font-size: 38px;
+  font-family: $header;
 }
 
 .columns {
@@ -96,16 +120,33 @@
   // vertical-align: bottom;
 }
 
+.splash {
+  padding: 20% 20px 0 20px;
+  text-align: center;
+  font-size: 20px;
+  font-family: $header;
+  color: $font-color-2;
+  h1 {
+    font-weight: bold;
+  }
+  a {
+    color: $primary-light;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
 //modal
 
 .modal {
   display: none;
-  position: fixed; 
-  z-index: 1; 
+  position: fixed;
+  z-index: 1;
   left: 0;
   top: 0;
-  width: 100%; 
-  height: 100%; 
+  width: 100%;
+  height: 100%;
   overflow: scroll;
   background-color: rgb(0, 0, 0);
   background-color: rgba(43, 122, 120, 0.8);

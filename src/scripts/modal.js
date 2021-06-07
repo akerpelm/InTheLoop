@@ -1,6 +1,6 @@
 export const modalInformation = `<div>
   <div class="wiki-header">
-    <p>Welcome to <span class="wiki-title">InTheLoop</span>, a web application designed to visualize data about securities listed on major global exchanges. </p>
+    <p class="wiki-header-title">Welcome to <span class="wiki-title">InTheLoop</span>, a web application designed to visualize data about securities listed on major global exchanges. </p>
     <p>The goal of the application is to lay out financial data in an inuitive manner, allowing individuals of any financial experience to navigate the application with ease and comfort </p>
     <p>Please take a moment to read through this brief page for a more enjoyable user experience.</p>
   </div>
@@ -91,7 +91,7 @@ export const modalInformation = `<div>
     </ul>
     <h4 id="wiki-contact">Contact</h4>
     <ul class="wiki-links">
-    <li class="wiki-links"><a  href="https://www.linkedin.com/in/alexander-kerpelman-22587584/" target="_blank">LinkedIn</a></li>
+    <li class="wiki-links"><a  href="https://www.linkedin.com/in/alex-kerpelman/" target="_blank">LinkedIn</a></li>
     <li class="wiki-links"><a  href="https://github.com/akerpelm/finance-app" target="_blank">GitHub</a></li>
     <li class="wiki-links"><a  href="mailto:test@test.com">Email</a></li>
     </ul>
