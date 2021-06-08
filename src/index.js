@@ -4,10 +4,10 @@ import { modalInformation } from "./scripts/modal";
 import { onInput } from "./scripts/search";
 import * as Util from "./scripts/util";
 
+{/* <button id="search-btn">Demo</button> */}
 document.querySelector(".header").innerHTML = `
 <div class="header-btns">
 <button id="help-modal-btn">Wiki</button>
-<button id="search-btn">Demo</button>
 </div>
 <div id="help-modal" class="modal">
 <div class="modal-content">
@@ -19,8 +19,12 @@ document.querySelector(".header").innerHTML = `
       <a href="https://www.linkedin.com/in/alex-kerpelman/" target="_blank">
       <i class="fab fa-linkedin"></i>
       </a>
-      <a href="https://github.com/akerpelm" target="_blank">
+      <a href="https://github.com/akerpelm/InTheLoop" target="_blank">
       <i class="fab fa-github">     
+      </i>
+      </a>
+      <a href="https://angel.co/u/alex-kerpelman" target="_blank">
+      <i class="fab fa-angellist">     
       </i>
       </a>
 </div>
@@ -43,42 +47,43 @@ window.onclick = (e) => {
   }
 };
 
+document.querySelector(".modal-information").innerHTML = modalInformation;
 //demo
 
-document.querySelector(".modal-information").innerHTML = modalInformation;
-let demoArray = [
-  "PSTH",
-  "PLTR",
-  "UUUU",
-  "Keurig",
-  "ATOS",
-  "MSFT",
-  "AAPL",
-  "TSLA",
-  "Unity Software",
-];
-const demoText = document.querySelector(".input");
-const demoWriter = demoArray[Math.floor(Math.random() * demoArray.length)];
-let idx = 1;
+// let demoArray = [
+//   "PSTH",
+//   "PLTR",
+//   "Unity Software",
+//   "UUUU",
+//   "Keurig",
+//   "ATOS",
+//   "MSFT",
+//   "AAPL",
+//   "TSLA",
+//   "Unity Software",
+// ];
+// const demoText = document.querySelector(".input");
+// const demoWriter = demoArray[Math.floor(Math.random() * demoArray.length)];
+// let idx = 1;
 
-document
-  .querySelector("#search-btn")
-  .addEventListener("click", () => setInterval(writeText, 100));
+// document
+//   .querySelector("#search-btn")
+//   .addEventListener("click", () => setInterval(writeText, 100));
 
-const writeText = async () => {
-  if (idx <= demoWriter.length) {
-    demoText.value = demoWriter.slice(0, idx);
+// const writeText = async () => {
+//   if (idx <= demoWriter.length) {
+//     demoText.value = demoWriter.slice(0, idx);
 
-    const event = new Event("event");
-    demoText.addEventListener("event", Util.debounce(onInput));
-    demoText.dispatchEvent(event);
+//     const event = new Event("event");
+//     demoText.addEventListener("event", Util.debounce(onInput));
+//     demoText.dispatchEvent(event);
 
-    idx++;
-  }
-  // else {
-  //   setTimeout(() => (demoText.value = ""), 60000);
-  // }
-};
+//     idx++;
+//   }
+//   // else {
+//   //   setTimeout(() => (demoText.value = ""), 60000);
+//   // }
+// };
 
 //menu
 document.querySelector(".splash").innerHTML = `
@@ -86,7 +91,9 @@ document.querySelector(".splash").innerHTML = `
 </br>
 <p>To get started, please click <a class="splash-wiki-link" href="">wiki</a> page to familiarize yourself with the application.</p>
 </br>
-<p>Once ready, search for a ticker, or click the demo button to generate a random ticker to search!</p>
+<p>Once ready, search for a ticker using the upper left search bar!</p>
+</br>
+<p>You may search by ticker: (MSFT, APPL), or by name: (Unity Software, Palantir)</p>
 </br>
 <p>At any point, click the logo at the top of the page to return to the home page.</p>`;
 

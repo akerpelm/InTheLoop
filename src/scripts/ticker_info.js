@@ -13,6 +13,7 @@ export const onTickerSelect = async (arg) => {
   if (response.data.Error) {
     return [];
   }
+  document.querySelector(".hidden-columns").classList.add("columns")
   document.querySelector(".single-ticker").innerHTML = tickerTemplate(
     response.data
   );

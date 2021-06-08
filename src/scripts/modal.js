@@ -94,6 +94,7 @@ export const modalInformation = `<div>
     <ul class="wiki-links">
     <li class="wiki-links"><a  href="https://www.linkedin.com/in/alex-kerpelman/" target="_blank">LinkedIn</a></li>
     <li class="wiki-links"><a  href="https://github.com/akerpelm/finance-app" target="_blank">GitHub</a></li>
+    <li class="wiki-links"><a  href="https://angel.co/u/alex-kerpelman" target="_blank">AngelList</a></li>
     <li class="wiki-links"><a  href="mailto:test@test.com">Email</a></li>
     </ul>
 

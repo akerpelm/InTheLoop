@@ -71,7 +71,9 @@
   font-size: 38px;
   font-family: $header;
 }
-
+.hidden-columns {
+  display: none;
+}
 .columns {
   display: flex;
   justify-content: space-between;
@@ -79,6 +81,7 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
 
 .header-logo-div {
   display: flex;
