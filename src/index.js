@@ -49,7 +49,6 @@ document.querySelector(".modal-information").innerHTML = modalInformation;
 let demoArray = [
   "PSTH",
   "PLTR",
-  "Mind Medicine",
   "UUUU",
   "Keurig",
   "ATOS",
