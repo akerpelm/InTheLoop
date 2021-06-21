@@ -13,7 +13,7 @@
 * [Design Docs](https://github.com/akerpelm/InTheLoop#design-docs)
 
 ### What is InTheLoop?
-* A data visualization tool for New York Stock Exchange (NYSE) listed companies. 
+* A data visualization tool for New York Stock Exchange (NYSE) listed companies crated in < 72 hours. 
 * Visualization includes price action for a stock at different timeframes, as well as information and metrics about the specified company.
 
 ## Demo
