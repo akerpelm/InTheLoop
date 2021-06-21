@@ -8,7 +8,9 @@
     * [Chart.js/Data Visualization](https://github.com/akerpelm/InTheLoop#chartjsdata-visualization)
     * [Search Functionality](https://github.com/akerpelm/InTheLoop#search-functionality)
     * [Wiki](https://github.com/akerpelm/InTheLoop#wiki)
-
+* [Future Direction](https://github.com/akerpelm/InTheLoop#future-direction)
+* [Limitations](https://github.com/akerpelm/InTheLoop#limitations)
+* [Design Docs](https://github.com/akerpelm/InTheLoop#design-docs)
 
 ### What is InTheLoop?
 * A data visualization tool for New York Stock Exchange (NYSE) listed companies. 
