@@ -125,9 +125,28 @@ export const onInput = async (e) => {
 
 
 ## Future Direction
-* Implement the ability to visualize the options chain, track unusual options activity, as well as showing some basic tools of technical analysis (SMA, EMA, RSI, Bollinger Bands). Currently, this is unavailable without making multiple API requests, which is impossible on a non-premium API.
-  * 
+* Add a premium API key to allow for more requests. As a result, more information will become available for display on the information page as well as the chart.
+* Include trading volume, candlestick charts as view options for charts.
+* Make more API requests for technical analysis tools (SMA, EMA, BB, RSI initially).
+* Include ability to overlap technical analysis with current chart.
+* Display a listing's option chain, unusual option activity (API contingent).
 
+## Limitations
+* The APIs used to gather data are free versions, meaning there is a limit to the requests that can be made to data per day. As a result, the application does not show realtime data, after-hours trading, or all of the information that is desired on the chart (trading volume, TA). This would involve more requests than allowed on a free plan of the APIs.
+* Certain ETFs and non-US listed securities do not display data, resulting in blank information pages and charts. Error handling has been implemented to show an error message if this occurs.
+* Charts do not account for historical stock splits, a chart may show what appears to be a sudden correction/price decline.
+* The "Max" chart shows the price action as far back as data was available in the creation of this site.
+* The metrics and technicals sections of a listing's information page are limited to what was present on a listing's API response. This is not indicative of the 'best' metrics, or ones that are valued by the author.
+
+<h1 align="center">
+   * * END * *
+</h1>
+
+</br>
+
+
+
+# Design Docs
 
 ## What?
 * A data visualization tool for New York Stock Exchange (NYSE) listed companies. 
