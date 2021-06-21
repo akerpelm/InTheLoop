@@ -11,9 +11,8 @@ images[4] = "public/images/learning.png";
 
 export const changeImg = () => {
   document.slide.src = images[i];
-
   i < images.length - 1 ? i++ : (i = 0);
 
   setTimeout(changeImg, interval);
 };
-window.onload = changeImg;
+window.onload = setTimeout(changeImg, 7000);
