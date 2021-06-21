@@ -1,8 +1,168 @@
-Finance App **change this title**
+# InTheLoop
+
+
+## Table of Contents
+* [Major Technologies Used](https://github.com/akerpelm/InTheLoop#major-technologies-used)
+* [Features](https://github.com/akerpelm/InTheLoop#features)
+    * [API Endpoints](https://github.com/akerpelm/InTheLoop#fetching-data-from-api-endpoints) 
+    * [Chart.js/Data Visualization](https://github.com/akerpelm/InTheLoop#chartjsdata-visualization)
+    * [Search Functionality](https://github.com/akerpelm/InTheLoop#search-functionality)
+    * [Wiki](https://github.com/akerpelm/InTheLoop#wiki)
+* [Future Direction](https://github.com/akerpelm/InTheLoop#future-direction)
+* [Limitations](https://github.com/akerpelm/InTheLoop#limitations)
+* [Design Docs](https://github.com/akerpelm/InTheLoop#design-docs)
+
+### What is InTheLoop?
+* A data visualization tool for New York Stock Exchange (NYSE) listed companies crated in < 72 hours. 
+* Visualization includes price action for a stock at different timeframes, as well as information and metrics about the specified company.
+
+## Demo
+Here is a link to the web application: [inTheLoop](https://akerpelm.github.io/InTheLoop/)
+
+![itl_demo](https://user-images.githubusercontent.com/77806372/122697726-f4e82c00-d213-11eb-9889-afffee0a27ee.gif)
+
+
+## Major Technologies Used
+* JavaScript: this single-page application was built entirely with JavaScript without reliance on a database or a backend.
+* Chart.js: data extrpolated from the various API endpoints was compiled into a chart using Chart.js.
+* TwelveData API: a "complex data" API call allowed all charts to fetch data from one API request, which was preferred over other APIs.
+* Alpha Vantage API: an API endpoint providing a broad overview of information for each specific listing was available, and was used for exactly this.
+
+## Features
+### Fetching Data from API Endpoints
+* Fetch data about all listings (to ensure search functionality), and individual listings (to ensure single listing view functionality) (1st API endpoint using Alpha Vantage).
+* Fetch and display a single listing's information (2nd API endpoint using Alpha Vantage)
+* Fetch time series data to show price action over different timeframes (1st API endpoint using TwelveData).
+
+```javascript
+const fetchData = async (searchQuery) => { //the simplest API call to allow search functionality
+  const response = await axios.get("https://www.alphavantage.co/query", {
+    params: {
+      function: "SYMBOL_SEARCH",
+      keywords: searchQuery,
+      apikey: avAPIKey,
+    },
+  });
+  if (response.data.Error) {
+    return [];
+  }
+  return response.data.bestMatches;
+};
+
+
+```
+
+### Chart.js/Data Visualization
+* API endpoint response data extracted andlinked to Chart.js for multiple timeframes.
+* Multiple timeframe line charts created using the JavaScript Chart.js library.
+* Customization of features to present clear and readable charts without any extraneous information. 
+* Ability to hover over a datapoint for more information about the open price and exact time at the specified location. 
+
+``` javascript
+ document.querySelector(".ticker-chart-max").innerHTML = chartTemplate(data);
+
+const chartTemplate = (chartInfo) => { //manipulation of response data for chart presentation.
+  let intervalWeekly = [];
+  let open = [];
+
+  Object.values(chartInfo.values).map((datapoint) => {
+    open.unshift(datapoint.open);
+    intervalWeekly.unshift(datapoint.datetime);
+  });
+
+  let percentChange = (
+    ((open[open.length - 1] - open[0]) / open[0]) *
+    100
+  ).toFixed(2);
+  percentChange = percentChange > 0 ? "+" + percentChange : percentChange;
+
+  let color = //determine the color of the line chart based on price Δ from open (or least recent datapoint) to present
+    open[open.length - 1] - open[0] > 0
+      ? "rgb(54, 236, 189)"
+      : "rgb(247, 108, 108)";
+  ...
+}
+```
+
+### Search Functionality
+  * Functional search bar allowing to search for any globally-listed security.
+  * Use of API endpoint to return data based on user input.
+  * Debounce logic present to limit API requests and improve app performance on a 300ms timeout.
+  * Create logic and functionality that presents and autocompletes search bar similtaneous to user input.
+``` javascript
+export const debounce = (cb) => { //dynamic debounce code to be used throughout code base. 
+  let timeoutId;
+  return (...args) => {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    timeoutId = setTimeout(() => {
+      cb.apply(null, args);
+    }, 300);
+  };
+};
+
+const input = document.querySelector(".input"); // implementation of debounce in search bar functionality
+const dropdown = document.querySelector(".dropdown");
+const resultsWrapper = document.querySelector(".results");
+
+export const onInput = async (e) => {
+  const listings = await fetchData(e.target.value);
+  if (!listings) {
+    return dropdown.classList.remove("is-active");
+  }
+  resultsWrapper.innerHTML = "";
+
+  dropdown.classList.add("is-active");
+
+  for (let ticker of listings) {
+    const queryOption = document.createElement("a");
+    queryOption.classList.add("dropdown-item");
+    queryOption.innerHTML = ` <h2> ${ticker["1. symbol"]} - ${ticker["2. name"]}</h2>
+        `;
+    queryOption.addEventListener("click", () => {
+      dropdown.classList.remove("is-active"); 
+  ...      
+  
+  input.addEventListener("input", Util.debounce(onInput));
+```
+![search_demo](https://user-images.githubusercontent.com/77806372/122698290-054cd680-d215-11eb-827e-98653742b2db.gif)
+
+
+### Wiki
+* Creation of Wiki modal to explain site functionality and allow for more seamless user experience.
+* Done through use of a modal to keep the site uncluttered and application-like.
+
+![wiki](https://user-images.githubusercontent.com/77806372/122698634-adfb3600-d215-11eb-915a-652eb7bc0d46.gif)
+
+
+## Future Direction
+* Add a premium API key to allow for more requests. As a result, more information will become available for display on the information page as well as the chart.
+* Include trading volume, candlestick charts as view options for charts.
+* Make more API requests for technical analysis tools (SMA, EMA, BB, RSI initially).
+* Include ability to overlap technical analysis with current chart.
+* Display a listing's option chain, unusual option activity (API contingent).
+
+## Limitations
+* The APIs used to gather data are free versions, meaning there is a limit to the requests that can be made to data per day. As a result, the application does not show realtime data, after-hours trading, or all of the information that is desired on the chart (trading volume, TA). This would involve more requests than allowed on a free plan of the APIs.
+* Certain ETFs and non-US listed securities do not display data, resulting in blank information pages and charts. Error handling has been implemented to show an error message if this occurs.
+* Charts do not account for historical stock splits, a chart may show what appears to be a sudden correction/price decline.
+* The "Max" chart shows the price action as far back as data was available in the creation of this site.
+* The metrics and technicals sections of a listing's information page are limited to what was present on a listing's API response. This is not indicative of the 'best' metrics, or ones that are valued by the author.
+
+<h1 align="center">
+   * * END * *
+</h1>
+
+</br>
+
+
+
+# Design Docs
 
 ## What?
 * A data visualization tool for New York Stock Exchange (NYSE) listed companies. 
-* Initially, visualization will include historical price action for a stock (with the potential to show daily highs/lows, **add here**!!!)
+* Initially, visualization will include historical price action for a stock, as well as information and metrics about the company.
 * Eventually, would like to implement the ability to visualize the options chain, track unusual options activity, as well as showing some basic tools of technical analysis (SMA, EMA, RSI, Bollinger Bands)
 
 ## Why?
