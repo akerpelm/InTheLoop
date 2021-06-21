@@ -108,6 +108,10 @@
 }
 
 .splash {
+  p {
+    padding-top: 50px;
+    font-size: 24px;
+  }
   // padding: 20% 20px 0 20px;
   display: flex;
   flex-direction: column;
@@ -190,10 +194,6 @@ a {
   &:hover {
     text-decoration: underline;
   }
-}
-p {
-  padding-top: 50px;
-  font-size: 24px;
 }
 
 //modal

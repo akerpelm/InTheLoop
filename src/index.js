@@ -12,6 +12,7 @@ import "./scripts/footer";
 document.querySelector(".header").innerHTML = `
 <div class="header-btns">
 <button id="help-modal-btn">Wiki</button>
+<button id="home">Home</button>
 </div>
 <div id="help-modal" class="modal">
 <div class="modal-content">
@@ -156,5 +157,8 @@ tab5.onclick = () => {
 };
 
 document.querySelector(".js-itl-logo").addEventListener("click", () => {
+  window.location.reload();
+});
+document.querySelector("#home").addEventListener("click", () => {
   window.location.reload();
 });
