@@ -1,27 +1,9 @@
-import { tdAPIKey, avAPIKey } from "../../secret";
-import axios from "axios";
+export const onChartSelectMax = (data) => {
+  let tickerSymbol = data.meta.symbol;
 
-export const onChartSelectMax = async (arg) => {
-  let tickerSymbol = arg["1. symbol"];
-  const response = await axios.get("https://api.twelvedata.com/time_series", {
-    params: {
-      symbol: tickerSymbol,
-      interval: "1week",
-      outputsize: "5000",
-      apikey: tdAPIKey,
-      source: "docs",
-    },
-  });
-
-  if (response.data.status === "error") {
-    console.log("API Call Limit Exceeded.")
-    return [];
-  }
   if (window.maxChart.id !== "maxChart") maxChart.destroy();
 
-  document.querySelector(".ticker-chart-max").innerHTML = chartTemplate(
-    response.data
-  );
+  document.querySelector(".ticker-chart-max").innerHTML = chartTemplate(data);
 };
 
 const chartTemplate = (chartInfo) => {

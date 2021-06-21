@@ -10,10 +10,14 @@ export const onTickerSelect = async (arg) => {
       apikey: avAPIKey,
     },
   });
+  if (response) {
+    const splash = document.querySelector(".splash");
+    splash.style.display = "none";
+  }
   if (response.data.Error) {
     return [];
   }
-  document.querySelector(".hidden-columns").classList.add("columns")
+  document.querySelector(".hidden-columns").classList.add("columns");
   document.querySelector(".single-ticker").innerHTML = tickerTemplate(
     response.data
   );
@@ -41,7 +45,6 @@ const tickerTemplate = (tickerDetail) => {
         <h4>Overview</h4>
         <p>Sector: </br>${tickerDetail.Sector}</p>
         <p>Industry: </br>${tickerDetail.Industry}</p>
-        <p>Employees: </br>${tickerDetail.FullTimeEmployees}</p>
         <p>${tickerDetail.Description}</p>
         <p>Address: </br>${
           tickerDetail.Address === "None"

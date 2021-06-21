@@ -1,29 +1,9 @@
-import { tdAPIKey } from "../../secret";
-import axios from "axios";
-
-export const onChartSelectMonthly = async (arg) => {
-  let tickerSymbol = arg["1. symbol"];
-
-  const response = await axios.get("https://api.twelvedata.com/time_series", {
-    params: {
-      symbol: tickerSymbol,
-      interval: "1h",
-      outputsize: "200",
-      apikey: tdAPIKey,
-      source: "docs",
-    },
-  });
-
-  if (response.data.status === "error") {
-    console.log("API Call Limit Exceeded.");
-    return [];
-  }
-
+export const onChartSelectMonthly = (data) => {
+  let tickerSymbol = data.meta.symbol;
   if (window.monthlyChart.id !== "monthlyChart") monthlyChart.destroy();
 
-  document.querySelector(".ticker-chart-monthly").innerHTML = chartTemplate(
-    response.data
-  );
+  document.querySelector(".ticker-chart-monthly").innerHTML =
+    chartTemplate(data);
 };
 
 const chartTemplate = (chartInfo) => {

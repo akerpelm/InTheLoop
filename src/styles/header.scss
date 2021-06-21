@@ -1,26 +1,3 @@
-.title {
-    position:absolute;
-    text-align: center;
-    left: 27%;
-    width: 50%;
-    top: 40px;
-    padding-top: 10px;   
-    font-size: 20px;
-    font-weight: bold;
-    color: $primary-light;
-    font-family: $header;
-    
-}
-
-
-.title-alt {
-    color: $primary-light;
-    font-weight: bold;
-    font-size: 20px;
-    font-family: $header;
-}
-
-
 .header {
   display: flex;
   flex-direction: row;
@@ -82,7 +59,6 @@
   margin-bottom: 20px;
 }
 
-
 .header-logo-div {
   display: flex;
   flex-direction: row;
@@ -122,21 +98,107 @@
   }
   // vertical-align: bottom;
 }
+.js-itl-logo {
+  position: absolute;
+  top: 0;
+  // right: 45%;
+  left: 47.5%;
+  height: 70px;
+  padding-top: 5px;
+}
 
 .splash {
-  padding: 20% 20px 0 20px;
+  // padding: 20% 20px 0 20px;
+  display: flex;
+  flex-direction: column;
   text-align: center;
   font-size: 20px;
   font-family: $header;
   color: $font-color-2;
+  align-items: center;
+  padding-bottom: 50px;
+  // background: pink;
   h1 {
+    padding-top: 60px;
     font-weight: bold;
+    font-size: 48px;
   }
+  .sub-title-1 {
+    padding-top: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: $header;
+    color: $font-color;
+    text-transform: uppercase;
+  }
+  .sub-title-2 {
+    padding-top: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: $header;
+    padding-top: 250px;
+    position: absolute;
+  }
+  .features {
+    font-weight: bold;
+    font-size: 30px;
+    color: $primary-light;
+    font-family: $title;
+    padding-top: 20px;
+  }
+  .sub-title-alt {
+    font-weight: bold;
+    font-size: 30px;
+    color: $primary-light;
+    font-family: $title;
+  }
+  .carousel-container {
+    min-height: 600px;
+    img {
+      border-radius: 10px;
+      height: auto;
+      max-height: 600px;
+      &:current {
+        padding: 200px;
+      }
+      @keyframes Fade {
+        0% {
+          opacity: 0;
+        }
+        10% {
+          opacity: 0;
+        }
+        25% {
+          opacity: 1;
+        }
+        // 80% {
+        //   opacity: 1;
+        // }
+        75% {
+          opacity: 1;
+        }
+
+        100% {
+          opacity: 0;
+        }
+      }
+      animation-name: Fade;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      animation-duration: 7s;
+      animation-direction: normal;
+    }
+  }
+
   a {
     color: $primary-light;
     &:hover {
       text-decoration: underline;
     }
+  }
+  p {
+    padding-top: 50px;
+    font-size: 24px;
   }
 }
 

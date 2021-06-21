@@ -3,8 +3,12 @@ import "./scripts/search";
 import { modalInformation } from "./scripts/modal";
 import { onInput } from "./scripts/search";
 import * as Util from "./scripts/util";
+import { changeImg } from "./scripts/carousel";
+import "./scripts/footer";
 
-{/* <button id="search-btn">Demo</button> */}
+{
+  /* <button id="search-btn">Demo</button> */
+}
 document.querySelector(".header").innerHTML = `
 <div class="header-btns">
 <button id="help-modal-btn">Wiki</button>
@@ -86,16 +90,25 @@ document.querySelector(".modal-information").innerHTML = modalInformation;
 // };
 
 //menu
+
 document.querySelector(".splash").innerHTML = `
-<h1>Welcome to InTheLoop</h1>
+
 </br>
+<h2 class="sub-title-1">Take control of your financial literacy. </br>
+<h2 class="sub-title-2">Get <span class="sub-title-alt">InTheLoop.</span><h2>
+</br>
+<div class="carousel-container">
+<img name="slide">
+</div>
+<h2 class="features">Get Started</h2>
 <p>To get started, please click <a class="splash-wiki-link" href="">wiki</a> page to familiarize yourself with the application.</p>
-</br>
+
 <p>Once ready, search for a ticker using the upper left search bar!</p>
-</br>
+
 <p>You may search by ticker: (MSFT, APPL), or by name: (Unity Software, Palantir)</p>
-</br>
-<p>At any point, click the logo at the top of the page to return to the home page.</p>`;
+
+<p>At any point, click the logo at the top of the page to return to the home page.</p>
+`;
 
 const wikiLink = document.querySelector(".splash-wiki-link");
 
@@ -108,6 +121,7 @@ let tabButtons = document.querySelectorAll(
 );
 let tabPanels = document.querySelectorAll(".tab-container .tab-panel");
 
+//Tabs
 export const showPanel = (idx) => {
   tabPanels.forEach((panel) => {
     panel.style.display = "none";

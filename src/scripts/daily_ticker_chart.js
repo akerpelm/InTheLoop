@@ -1,35 +1,14 @@
-import { tdAPIKey } from "../../secret";
-import axios from "axios";
-
-export const onChartSelectDaily = async (arg) => {
-  let tickerSymbol = arg["1. symbol"];
+export const onChartSelectDaily = (data) => {
+  let tickerSymbol = data.meta.symbol;
 
   if (tickerSymbol) {
     const tabContainer = document.querySelector(".tab-container");
     tabContainer.style.visibility = "visible";
-    document.querySelector(".single-ticker").style.overflowY = "scroll" 
-    const splash = document.querySelector(".splash")
-    splash.style.display = "none"
-
+    document.querySelector(".single-ticker").style.overflowY = "scroll";
     document.querySelector(".chart").classList.add("is-active-chart");
   }
-  const response = await axios.get("https://api.twelvedata.com/time_series", {
-    params: {
-      symbol: tickerSymbol,
-      interval: "1min",
-      outputsize: "670",
-      apikey: tdAPIKey,
-      source: "docs",
-    },
-  });
-  if (response.data.status === "error") {
-    console.log("API Call Limit Exceeded.");
-    return [];
-  }
   if (window.dailyChart.id !== "dailyChart") dailyChart.destroy();
-  document.querySelector(".ticker-chart-daily").innerHTML = chartTemplate(
-    response.data
-  );
+  document.querySelector(".ticker-chart-daily").innerHTML = chartTemplate(data);
 };
 
 const chartTemplate = (chartInfo) => {
@@ -42,12 +21,6 @@ const chartTemplate = (chartInfo) => {
       open.unshift(parseFloat(datapoint.open).toFixed(2));
     }
   });
-
-  // Object.values(chartInfo.values).map((datapoint) => {
-  //   let tmpDate = new Date(datapoint.datetime);
-  //   if (tmpDate.getDay() == new Date(Date.now()).getDay()) {
-  //   }
-  // });
 
   let percentChange = (
     ((open[open.length - 1] - open[0]) / open[0]) *
@@ -126,7 +99,7 @@ const chartTemplate = (chartInfo) => {
           font: {
             family:
               "Cambria, 'Cochin', 'Georgia', 'Times', 'Times New Roman', serif",
-              size: 18,
+            size: 18,
           },
         },
         legend: {

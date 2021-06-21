@@ -1,5 +1,5 @@
 import * as Util from "./util";
-import { avAPIKey } from "../../secret";
+import { avAPIKey, tdAPIKey } from "../../secret";
 import axios from "axios";
 import { onTickerSelect } from "./ticker_info";
 import { onChartSelectDaily } from "./daily_ticker_chart";
@@ -7,6 +7,11 @@ import { onChartSelectWeekly } from "./weekly_ticker_chart";
 import { onChartSelectMax } from "./max_ticker_chart";
 import { onChartSelectMonthly } from "./monthly_ticker_chart";
 import { onChartSelectYearly } from "./yearly_ticker_chart";
+const twelvedata = require("twelvedata");
+const config = {
+  key: tdAPIKey,
+};
+const client = twelvedata(config);
 
 const fetchData = async (searchQuery) => {
   const response = await axios.get("https://www.alphavantage.co/query", {
@@ -54,12 +59,34 @@ export const onInput = async (e) => {
     queryOption.addEventListener("click", () => {
       dropdown.classList.remove("is-active");
       input.value = ticker["2. name"];
+
+      const params = {
+        symbols: [ticker["1. symbol"]],
+        intervals: ["1min", "1h", "8h", "1week"],
+        outputsize: 670,
+        methods: [
+          "time_series",
+          // {
+          //   name: "ema",
+          //   time_period: 12,
+          // },
+        ],
+      };
+
+      client
+        .complexData(params)
+        .then((data) => {
+          onChartSelectDaily(data.data[0]);
+          onChartSelectWeekly(data.data[1]);
+          onChartSelectMonthly(data.data[1]);
+          onChartSelectYearly(data.data[2]);
+          onChartSelectMax(data.data[3]);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
       onTickerSelect(ticker);
-      onChartSelectDaily(ticker);
-      onChartSelectWeekly(ticker);
-      onChartSelectMonthly(ticker);
-      onChartSelectYearly(ticker);
-      onChartSelectMax(ticker);
     });
     resultsWrapper.appendChild(queryOption);
   }

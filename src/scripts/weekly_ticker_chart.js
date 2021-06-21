@@ -1,27 +1,10 @@
-import { tdAPIKey, avAPIKey } from "../../secret";
-import axios from "axios";
-
-export const onChartSelectWeekly = async (arg) => {
-  let tickerSymbol = arg["1. symbol"];
-  const response = await axios.get("https://api.twelvedata.com/time_series", {
-    params: {
-      symbol: tickerSymbol,
-      interval: "1h",
-      outputsize: "600",
-      apikey: tdAPIKey,
-      source: "docs",
-    },
-  });
-    if (response.data.status === "error") {
-      console.log("API Call Limit Exceeded.");
-      return [];
-    }
+export const onChartSelectWeekly = (data) => {
+  let tickerSymbol = data.meta.symbol;
 
   if (window.weeklyChart.id !== "weeklyChart") weeklyChart.destroy();
 
-  document.querySelector(".ticker-chart-weekly").innerHTML = chartTemplate(
-    response.data
-  );
+  document.querySelector(".ticker-chart-weekly").innerHTML =
+    chartTemplate(data);
 };
 
 let oneWeekPrior = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
@@ -50,7 +33,9 @@ const chartTemplate = (chartInfo) => {
   ).toFixed(2);
 
   let color =
-    open[open.length - 1] - open[0] > 0 ? "rgb(54, 236, 189)" : "rgb(247, 108, 108)";
+    open[open.length - 1] - open[0] > 0
+      ? "rgb(54, 236, 189)"
+      : "rgb(247, 108, 108)";
   percentChange = percentChange > 0 ? "+" + percentChange : percentChange;
 
   let ctx = document.getElementById("weeklyChart").getContext("2d");
