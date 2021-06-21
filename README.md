@@ -1,5 +1,15 @@
 # InTheLoop
 
+
+## Table of Contents
+* [Major Technologies Used](https://github.com/akerpelm/InTheLoop#major-technologies-used)
+* [Features](https://github.com/akerpelm/InTheLoop#features)
+    * [API Endpoints](https://github.com/akerpelm/InTheLoop#fetching-data-from-api-endpoints) 
+    * [Chart.js/Data Visualization](https://github.com/akerpelm/InTheLoop#chartjsdata-visualization)
+    * [Search Functionality](https://github.com/akerpelm/InTheLoop#search-functionality)
+    * [Wiki](https://github.com/akerpelm/InTheLoop#wiki)
+
+
 ### What is InTheLoop?
 * A data visualization tool for New York Stock Exchange (NYSE) listed companies. 
 * Visualization includes price action for a stock at different timeframes, as well as information and metrics about the specified company.
