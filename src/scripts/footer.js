@@ -28,6 +28,7 @@ document.querySelector(".footer").innerHTML = `
             <li><a href="https://www.linkedin.com/in/alex-kerpelman/" target="_blank">LinkedIn</a></li>
             <li><a href="https://github.com/akerpelm/InTheLoop" target="_blank">GitHub</a></li>
             <li><a href="https://angel.co/u/alex-kerpelman" target="_blank">AngelList</a></li>
+            <li><a href="https://www.akerpelmandev.com" target="_blank">Personal Site</a></li>
             <li><a href="mailto:akerpelm@gmail.com">Email</a></li>
            
         </div>
