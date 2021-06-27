@@ -1,13 +1,17 @@
 @import "reset.scss";
 @import "palette.scss";
-@import "search.scss";
 @import "header.scss";
 @import "modal.scss";
 @import "ticker_info.scss";
 @import "ticker_chart.scss";
 @import "footer.scss";
+@import "search.scss";
 
 body {
   background-color: $primary;
   color: $font-color-2;
+}
+
+.container {
+  min-width: 100%;
 }

@@ -18,22 +18,31 @@
   li,
   p {
     padding: 10px 0;
+    padding-left: 50px;
   }
   a {
     text-decoration: none;
     color: $primary-dark;
+    &:hover {
+      color: $primary;
+    }
   }
 
   h4 {
     font-size: 20px;
     font-weight: bold;
     padding: 25px 0 25px 0;
-    text-align: center;
+    text-align: left;
     color: $primary-dark;
+    cursor: pointer;
+    &:hover {
+      color: $primary;
+    }
   }
   h5 {
     padding: 10px 0;
     font-weight: bold;
+    padding-left: 50px;
   }
   .components {
     padding-bottom: 10px;
@@ -51,6 +60,7 @@
   }
   .wiki-header {
     margin-top: 10px;
+    text-align: center;
     .wiki-header-title {
       font-weight: bold;
       // text-decoration: underline;
@@ -69,7 +79,12 @@
     text-decoration: none;
   }
   #wiki-contact {
-    padding-bottom: 10px;
+    padding-bottom: 20px;
+    text-align: center;
+    cursor: auto;
+    &:hover {
+      color: $primary-dark;
+    }
   }
 
   .wiki-links {
@@ -87,4 +102,45 @@
       }
     }
   }
+}
+
+.search-ul {
+  display: none;
+}
+.search-active {
+  display: block;
+}
+
+.information-ul {
+  display: none;
+}
+.information-active {
+  display: block;
+}
+
+.charts-ul {
+  display: none;
+}
+.charts-active {
+  display: block;
+}
+
+.limitations-ul {
+  display: none;
+}
+.limitations-active {
+  display: block;
+}
+
+.learn-ul {
+  display: none;
+}
+.learn-active {
+  display: block;
+}
+.future-ul {
+  display: none;
+}
+.future-active {
+  display: block;
 }

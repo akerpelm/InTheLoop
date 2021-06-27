@@ -13,6 +13,15 @@ export const onTickerSelect = async (arg) => {
   if (response) {
     const splash = document.querySelector(".splash");
     splash.style.display = "none";
+    const splashTwo = document.querySelector(".splash-2");
+    splashTwo.style.display = "none";
+    const search = document.querySelector(".search");
+    search.style.display = "flex";
+    const searchTwo = document.querySelector(".search-2");
+    searchTwo.style.display = "none";
+    document.querySelector(".js-itl-logo").style.display = "block";
+    const demo = document.querySelector("#search-btn");
+    demo.style.display = "none";
   }
   if (response.data.Error) {
     return [];

@@ -1,18 +1,18 @@
 import "./styles/index.scss";
 import "./scripts/search";
 import { modalInformation } from "./scripts/modal";
-import { onInput } from "./scripts/search";
+import { onInput, onInputTwo } from "./scripts/search";
 import * as Util from "./scripts/util";
-import { changeImg } from "./scripts/carousel";
+// import { changeImg } from "./scripts/carousel";
 import "./scripts/footer";
 
 {
-  /* <button id="search-btn">Demo</button> */
 }
 document.querySelector(".header").innerHTML = `
 <div class="header-btns">
 <button id="help-modal-btn">Wiki</button>
 <button id="home">Home</button>
+<button id="search-btn">Demo</button> 
 </div>
 <div id="help-modal" class="modal">
 <div class="modal-content">
@@ -55,60 +55,70 @@ window.onclick = (e) => {
 document.querySelector(".modal-information").innerHTML = modalInformation;
 //demo
 
-// let demoArray = [
-//   "PSTH",
-//   "PLTR",
-//   "Unity Software",
-//   "UUUU",
-//   "Keurig",
-//   "ATOS",
-//   "MSFT",
-//   "AAPL",
-//   "TSLA",
-//   "Unity Software",
-// ];
-// const demoText = document.querySelector(".input");
-// const demoWriter = demoArray[Math.floor(Math.random() * demoArray.length)];
-// let idx = 1;
+let demoArray = [
+  "PSTH",
+  "PLTR",
+  "UUUU",
+  "Keurig",
+  "ATOS",
+  "MSFT",
+  "AAPL",
+  "TSLA",
+  "Unity Software",
+];
+const demoText = document.querySelector(".input-2");
+const demoWriter = demoArray[Math.floor(Math.random() * demoArray.length)];
+let idx = 1;
 
-// document
-//   .querySelector("#search-btn")
-//   .addEventListener("click", () => setInterval(writeText, 100));
+document
+  .querySelector("#search-btn")
+  .addEventListener("click", () => setInterval(writeText, 100));
 
-// const writeText = async () => {
-//   if (idx <= demoWriter.length) {
-//     demoText.value = demoWriter.slice(0, idx);
+const writeText = async () => {
+  if (idx <= demoWriter.length) {
+    demoText.value = demoWriter.slice(0, idx);
 
-//     const event = new Event("event");
-//     demoText.addEventListener("event", Util.debounce(onInput));
-//     demoText.dispatchEvent(event);
+    const event = new Event("event");
+    demoText.addEventListener("event", Util.debounce(onInputTwo));
+    demoText.dispatchEvent(event);
 
-//     idx++;
-//   }
-//   // else {
-//   //   setTimeout(() => (demoText.value = ""), 60000);
-//   // }
-// };
+    idx++;
+  } else {
+    setTimeout(() => (demoText.value = ""), 60000);
+  }
+};
 
 //menu
+{
+  /* <div class="carousel-container"> */
+}
 
 document.querySelector(".splash").innerHTML = `
 
 </br>
 <h2 class="sub-title-1">Take control of your financial literacy. </br>
-<h2 class="sub-title-2">Get <span class="sub-title-alt">InTheLoop.</span><h2>
+
+<h2 class="sub-title-2">Get <span class="sub-title-alt">InTheLoop.</span></h2>
 </br>
-<div class="carousel-container">
-<img name="slide">
+
+
 </div>
-<h2 class="features">Get Started</h2>
+
+`;
+document.querySelector(".splash-2").innerHTML = `
+
+<div class="splash-2">
+<div class="splash-2-left">
+
 <p>To get started, please click <a class="splash-wiki-link" href="">wiki</a> page to familiarize yourself with the application.</p>
 
-<p>Once ready, search for a ticker using the upper left search bar!</p>
+<p>Once ready, search for a ticker using the search bar.</p>
 
 <p>You may search by ticker: (MSFT, APPL), or by name: (Unity Software, Palantir)</p>
 
-<p>At any point, click the logo at the top of the page to return to the home page.</p>
+</div>
+
+</div>
 `;
 
 const wikiLink = document.querySelector(".splash-wiki-link");
@@ -161,4 +171,30 @@ document.querySelector(".js-itl-logo").addEventListener("click", () => {
 });
 document.querySelector("#home").addEventListener("click", () => {
   window.location.reload();
+});
+
+//Wiki Accordion
+document.querySelector("#wiki-search").addEventListener("click", () => {
+  document.querySelector(".search-ul").classList.toggle("search-active");
+});
+document
+  .querySelector("#wiki-information-page")
+  .addEventListener("click", () => {
+    document
+      .querySelector(".information-ul")
+      .classList.toggle("information-active");
+  });
+document.querySelector("#wiki-charts").addEventListener("click", () => {
+  document.querySelector(".charts-ul").classList.toggle("charts-active");
+});
+document.querySelector("#wiki-limitations").addEventListener("click", () => {
+  document
+    .querySelector(".limitations-ul")
+    .classList.toggle("limitations-active");
+});
+document.querySelector("#wiki-learn").addEventListener("click", () => {
+  document.querySelector(".learn-ul").classList.toggle("learn-active");
+});
+document.querySelector("#wiki-future").addEventListener("click", () => {
+  document.querySelector(".future-ul").classList.toggle("future-active");
 });
