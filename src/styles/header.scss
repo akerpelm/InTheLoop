@@ -105,7 +105,7 @@
   left: 47.5%;
   height: 70px;
   padding-top: 5px;
-  // display: none;
+  display: none;
   width: 100px;
   height: auto;
   &:hover {
@@ -246,7 +246,7 @@ a {
 
 .indices {
   background: $primary-dark;
-  padding: 10px 0;
+  padding: 7px 0;
   width: 100%;
   overflow: hidden;
 }
@@ -260,8 +260,8 @@ a {
   position: relative;
   // flex-wrap: nowrap;
   transform: translateX(100%);
-  animation: animate 35s linear infinite;
-  animation-delay: -35s;
+  animation: animate 30s linear infinite;
+  animation-delay: -30s;
   li {
     padding-right: 50px;
     white-space: nowrap;
@@ -316,4 +316,25 @@ a {
 
 .splash-wiki-link {
   color: $font-color;
+}
+
+.splash-2-left {
+  border: 2px solid $font-color;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: $primary-dark;
+  p {
+    font-size: 18px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+  }
+  &:first-of-type {
+    padding-top: 0px;
+  }
+}
+
+.js-itl-logo-2 {
+  height: 40px;
+  padding-top: 10px;
 }

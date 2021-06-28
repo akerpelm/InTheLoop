@@ -102,6 +102,8 @@ document.querySelector(".splash-2").innerHTML = `
 <div class="splash-2">
 <div class="splash-2-left">
 
+<img class="js-itl-logo-2" src="public/images/ITL_logo.png">
+
 <p>Click the <a class="splash-wiki-link" href="">wiki</a> button to familiarize yourself with the application.</p>
 
 <p>Once ready, search for a ticker using the search bar.</p>

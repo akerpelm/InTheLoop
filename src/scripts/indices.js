@@ -47,7 +47,7 @@ export const splashIndices = async (e) => {
     queryOption.classList.add("index");
     queryOption.innerHTML = `
 
-    <h2> <i class="${arrow}"></i> ${ticker["meta"]["symbol"]}: ${parseFloat(
+    <h2> <i class="${arrow}"></i> ${ticker["meta"]["symbol"]} - ${parseFloat(
       ticker.values[0].close
     ).toFixed(2)} <span>${closeValue(
       parseFloat(ticker.values[0].close),
