@@ -2,7 +2,7 @@ import { avAPIKey } from "../../secret";
 import axios from "axios";
 
 export const onTickerSelect = async (arg) => {
-  let tickerSymbol = arg["1. symbol"];
+  let tickerSymbol = arg.symbol;
   const response = await axios.get("https://www.alphavantage.co/query", {
     params: {
       function: "OVERVIEW",
@@ -54,7 +54,11 @@ const tickerTemplate = (tickerDetail) => {
         <h4>Overview</h4>
         <p>Sector: </br>${tickerDetail.Sector}</p>
         <p>Industry: </br>${tickerDetail.Industry}</p>
-        <p>${tickerDetail.Description}</p>
+        <p>Description: </br>${
+          tickerDetail.Description == "None"
+            ? "No description available"
+            : tickerDetail.Description
+        }</p>
         <p>Address: </br>${
           tickerDetail.Address === "None"
             ? "No address found"

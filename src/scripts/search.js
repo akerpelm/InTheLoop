@@ -14,25 +14,37 @@ const config = {
 const client = twelvedata(config);
 
 const fetchData = async (searchQuery) => {
-  const response = await axios.get("https://www.alphavantage.co/query", {
+  const response = await axios.get("https://api.twelvedata.com/symbol_search", {
     params: {
-      function: "SYMBOL_SEARCH",
-      keywords: searchQuery,
-      apikey: avAPIKey,
+      symbol: searchQuery,
+      exchange: "NYSE",
+      exchange_timezone: "America/New_York",
+      country: "United States",
+
+      // keywords: searchQuery,
+      // apikey: avAPIKey,
     },
   });
   if (response.data.Error) {
     return [];
   }
-  return response.data.bestMatches.filter(
-    (match) =>
-      match["3. type"] == "Equity" && match["4. region"] === "United States"
+  // let unique = [];
+
+  // response.data.data.forEach((datapoint) =>
+  //   unique.includes(datapoint.symbol) ? unique.push(datapoint) : ""
+  // );
+  return response.data.data.filter(
+    (datapoint) => datapoint.country == "United States"
   );
+  // return response.data.bestMatches.filter(
+  //   (match) =>
+  //     match["3. type"] == "Equity" && match["4. region"] === "United States"
+  // );
 };
 
 const search = document.querySelector(".search");
 search.innerHTML = `
-  <input class="input" id="search-input" placeholder="Search"/>
+  <input class="input" id="search-input" autocomplete="off" placeholder="Search by name or ticker..."/>
   <div class="dropdown">
     <div class="dropdown-menu">
       <div class="dropdown-content results">
@@ -47,6 +59,7 @@ const resultsWrapper = document.querySelector(".results");
 
 export const onInput = async (e) => {
   const listings = await fetchData(e.target.value);
+
   if (!listings) {
     return dropdown.classList.remove("is-active");
   }
@@ -57,14 +70,14 @@ export const onInput = async (e) => {
   for (let ticker of listings) {
     const queryOption = document.createElement("a");
     queryOption.classList.add("dropdown-item");
-    queryOption.innerHTML = ` <h2> ${ticker["1. symbol"]} - ${ticker["2. name"]}</h2>
+    queryOption.innerHTML = ` <h2> ${ticker.symbol} - ${ticker.instrument_name}</h2>
         `;
     queryOption.addEventListener("click", () => {
       dropdown.classList.remove("is-active");
-      input.value = ticker["2. name"];
+      input.value = ticker.instrument_name;
 
       const params = {
-        symbols: [ticker["1. symbol"]],
+        symbols: [ticker.symbol],
         intervals: ["1min", "1h", "8h", "1week"],
         outputsize: 670,
         methods: [
@@ -105,7 +118,7 @@ document.addEventListener("click", (e) => {
 
 const searchTwo = document.querySelector(".search-2");
 searchTwo.innerHTML = `
-  <input class="input-2" id="search-input" placeholder="Search"/>
+  <input class="input-2" id="search-input" autocomplete="off" placeholder="Search by name or ticker..."/>
   <div class="dropdown-2">
     <div class="dropdown-menu-2">
       <div class="dropdown-content results-2">
@@ -130,14 +143,14 @@ export const onInputTwo = async (e) => {
   for (let ticker of listings) {
     const queryOption = document.createElement("a");
     queryOption.classList.add("dropdown-item");
-    queryOption.innerHTML = ` <h2> ${ticker["1. symbol"]} - ${ticker["2. name"]}</h2>
+    queryOption.innerHTML = ` <h2> ${ticker.symbol} - ${ticker.instrument_name}</h2>
         `;
     queryOption.addEventListener("click", () => {
       dropdownTwo.classList.remove("is-active");
-      inputTwo.value = ticker["2. name"];
+      inputTwo.value = ticker.instrument_name;
 
       const params = {
-        symbols: [ticker["1. symbol"]],
+        symbols: [ticker.symbol],
         intervals: ["1min", "1h", "8h", "1week"],
         outputsize: 670,
         methods: [
