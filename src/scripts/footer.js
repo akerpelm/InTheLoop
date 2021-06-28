@@ -7,7 +7,7 @@ document.querySelector(".footer").innerHTML = `
         <div class="link-section">
             <ul>
             <p class="link-section-header">Features</p>
-            <li>Search for any globally listed security</li>
+            <li>Search for any US listed security</li>
             <li>Using multiple APIs, quickly access data about a security</li>
             <li>Visualize price action over different timeframes using realtime data</li>
             </ul>

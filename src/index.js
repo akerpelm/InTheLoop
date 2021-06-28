@@ -5,6 +5,7 @@ import { onInput, onInputTwo } from "./scripts/search";
 import * as Util from "./scripts/util";
 // import { changeImg } from "./scripts/carousel";
 import "./scripts/footer";
+import "./scripts/indices";
 
 {
 }
@@ -55,17 +56,7 @@ window.onclick = (e) => {
 document.querySelector(".modal-information").innerHTML = modalInformation;
 //demo
 
-let demoArray = [
-  "PSTH",
-  "PLTR",
-  "UUUU",
-  "Keurig",
-  "ATOS",
-  "MSFT",
-  "AAPL",
-  "TSLA",
-  "Unity Software",
-];
+let demoArray = ["PSTH", "PLTR", "UUUU", "BA", "ATOS", "MSFT", "AAPL", "TSLA"];
 const demoText = document.querySelector(".input-2");
 const demoWriter = demoArray[Math.floor(Math.random() * demoArray.length)];
 let idx = 1;
@@ -74,14 +65,13 @@ document
   .querySelector("#search-btn")
   .addEventListener("click", () => setInterval(writeText, 100));
 
-const writeText = async () => {
+const writeText = () => {
   if (idx <= demoWriter.length) {
     demoText.value = demoWriter.slice(0, idx);
 
     const event = new Event("event");
     demoText.addEventListener("event", Util.debounce(onInputTwo));
     demoText.dispatchEvent(event);
-
     idx++;
   } else {
     setTimeout(() => (demoText.value = ""), 60000);
@@ -110,7 +100,7 @@ document.querySelector(".splash-2").innerHTML = `
 <div class="splash-2">
 <div class="splash-2-left">
 
-<p>To get started, please click <a class="splash-wiki-link" href="">wiki</a> page to familiarize yourself with the application.</p>
+<p>Click the <a class="splash-wiki-link" href="">wiki</a> page button to familiarize yourself with the application.</p>
 
 <p>Once ready, search for a ticker using the search bar.</p>
 

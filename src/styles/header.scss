@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
   font-family: $header;
-  padding-top: 10px;
+  padding: 10px 0;
   background-color: $font-color-2;
 
   button {
@@ -239,4 +239,73 @@ a {
 
 .splash-2 {
   display: flex;
+}
+
+.indices {
+  background: $font-color-2;
+  padding: 10px 0;
+}
+.splash-indices {
+  display: flex;
+  font-size: 14px;
+  font-family: $header;
+  background-color: $font-color-2;
+  color: $font-color;
+  // overflow: hidden;
+  position: relative;
+  // flex-wrap: nowrap;
+  transform: translateX(100%);
+  animation: animate 35s linear infinite;
+  animation-delay: -35s;
+  li {
+    padding-right: 50px;
+    white-space: nowrap;
+    font-weight: bold;
+    h2 {
+      display: flex;
+      align-items: center;
+    }
+  }
+  .negative {
+    span {
+      background-color: rgb(247, 108, 108);
+      padding: 2px 5px;
+      border-radius: 4px;
+      color: $font-color;
+      font-weight: bold;
+      margin-left: 5px;
+    }
+    i {
+      color: rgb(247, 108, 108);
+      padding-right: 5px;
+      padding-left: 5px;
+      padding-bottom: 5px;
+    }
+  }
+  .positive {
+    span {
+      background-color: rgb(54, 236, 189);
+      padding: 2px 5px;
+      border-radius: 4px;
+      color: $font-color-2;
+      font-weight: bold;
+      margin-left: 5px;
+    }
+    i {
+      color: rgb(54, 236, 189);
+
+      padding-top: 5px;
+      padding-right: 5px;
+      padding-left: 5px;
+    }
+  }
+}
+
+@keyframes animate {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-150%);
+  }
 }

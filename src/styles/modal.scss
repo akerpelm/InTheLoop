@@ -31,7 +31,7 @@
   h4 {
     font-size: 20px;
     font-weight: bold;
-    padding: 25px 0 25px 0;
+    padding: 25px 0 25px 50px;
     text-align: left;
     color: $primary-dark;
     cursor: pointer;
@@ -60,9 +60,11 @@
   }
   .wiki-header {
     margin-top: 10px;
-    text-align: center;
+    text-align: left;
     .wiki-header-title {
+      padding-bottom: 20px;
       font-weight: bold;
+      font-size: 24px;
       // text-decoration: underline;
     }
   }
@@ -104,6 +106,30 @@
   }
 }
 
+.wiki-body {
+  li {
+    padding: 10px 5px;
+    margin-left: 50px;
+    background: $font-color;
+    &:first-of-type {
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+    &:last-of-type {
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+  }
+}
+
+#wiki-contact {
+  padding: 20px 0;
+}
+.wiki-links {
+  li {
+    background-color: $primary-light;
+  }
+}
 .search-ul {
   display: none;
 }

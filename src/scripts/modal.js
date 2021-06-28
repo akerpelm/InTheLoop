@@ -1,16 +1,15 @@
 export const modalInformation = `<div>
  <div class="wiki-header">
-   <p class="wiki-header-title"><span class="wiki-title">InTheLoop</span> is a web application designed to visualize data about securities listed on major global exchanges. </p>
-   <p>The goal of the application is to lay out financial data in an intuitive manner, allowing individuals of any financial experience to navigate the application with ease and comfort.</p>
-   <p>Please take a moment to read through this brief page for a more enjoyable user experience.</p>
-   <p>Click on a section to read more.</p>
+   <p class="wiki-header-title"><span class="wiki-title">InTheLoop</span> is a web application designed to visualize data about securities listed on major US exchanges.</p>
+   <p>Basic financial data is laid out in an intuitive manner, allowing individuals with any level of financial experience to navigate the application with ease and comfort.</p>
+   <p>Click a section to read more.</p>
  </div>
 
  <div class="wiki-body">
  
  <h4 id="wiki-search">Search</h4>
    <ul class="search-ul">
-     <li>Search for any globally traded security.</li>
+     <li>Search for any ly traded security.</li>
      <li>All securities will show on the search bar, but some will not display complete information (see <a href="#wiki-information-page">information page</a>, below).</li>
      <li>An auto-populate feature has been implemented, allowing for search by ticker (ie: "MSF" or "MSFT"), or by name ("Micr" or "Microsoft").
      <li>A dropdown will appear, from which, a single click will lead to an information page about the security.

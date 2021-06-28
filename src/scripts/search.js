@@ -24,7 +24,10 @@ const fetchData = async (searchQuery) => {
   if (response.data.Error) {
     return [];
   }
-  return response.data.bestMatches;
+  return response.data.bestMatches.filter(
+    (match) =>
+      match["3. type"] == "Equity" && match["4. region"] === "United States"
+  );
 };
 
 const search = document.querySelector(".search");
@@ -44,7 +47,6 @@ const resultsWrapper = document.querySelector(".results");
 
 export const onInput = async (e) => {
   const listings = await fetchData(e.target.value);
-  debugger;
   if (!listings) {
     return dropdown.classList.remove("is-active");
   }
