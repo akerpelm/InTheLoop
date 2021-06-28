@@ -247,8 +247,11 @@ a {
 .indices {
   background: $primary-dark;
   padding: 10px 0;
+  width: 100%;
+  overflow: hidden;
 }
 .splash-indices {
+  width: 100%;
   display: flex;
   font-size: 14px;
   font-family: $header;
