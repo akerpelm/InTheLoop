@@ -9,7 +9,7 @@ export const modalInformation = `<div>
  
  <h4 id="wiki-search">Search</h4>
    <ul class="search-ul">
-     <li>Search for any ly traded security.</li>
+     <li>Search for any US-traded security.</li>
      <li>All securities will show on the search bar, but some will not display complete information (see <a href="#wiki-information-page">information page</a>, below).</li>
      <li>An auto-populate feature has been implemented, allowing for search by ticker (ie: "MSF" or "MSFT"), or by name ("Micr" or "Microsoft").
      <li>A dropdown will appear, from which, a single click will lead to an information page about the security.

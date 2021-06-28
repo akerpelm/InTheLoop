@@ -21,6 +21,8 @@ document.querySelector(".header").innerHTML = `
 <div class="modal-information"></div>
 </div>
 </div>
+    <img class="js-itl-logo" src="public/images/ITL_logo.png">
+
 <div class="header-logo-div">
       <a href="https://www.linkedin.com/in/alex-kerpelman/" target="_blank">
       <i class="fab fa-linkedin"></i>

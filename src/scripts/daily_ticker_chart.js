@@ -37,9 +37,9 @@ const chartTemplate = (chartInfo) => {
 
   let color =
     open[open.length - 1] - open[0] > 0
-      ? "rgb(54, 236, 189)"
+      ? `"rgb(98, 205, 50)"`
       : "rgb(247, 108, 108)";
-  color = percentChange.length > 10 ? "rgb(54, 236, 189)" : color;
+  color = percentChange.length > 10 ? "rgb(98, 205, 50)" : color;
 
   let ctx = document.getElementById("dailyChart").getContext("2d");
 

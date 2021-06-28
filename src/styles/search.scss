@@ -5,10 +5,10 @@
   margin-left: 10px;
   max-width: 100%;
   width: 250px;
-  background-color: $primary-light;
-  border-color: #dbdbdb;
+  background-color: $font-color-2;
+  border-color: $primary-light;
   border-radius: 4px;
-  color: $font-color-2;
+  color: $font-color-3;
   align-items: center;
   border: 1px solid black;
   border-radius: 4px;
@@ -99,7 +99,7 @@ a.dropdown-item {
   display: none;
   justify-content: space-between;
   padding-bottom: 5px;
-  background-color: $font-color-2;
+  background-color: $primary-dark;
 }
 
 .search-2 {

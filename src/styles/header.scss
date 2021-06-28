@@ -4,10 +4,10 @@
   justify-content: space-between;
   font-family: $header;
   padding: 10px 0;
-  background-color: $font-color-2;
+  background-color: $primary-dark;
 
   button {
-    background: $font-color-2;
+    background: $primary-dark;
     border: none;
     font-weight: bold;
     color: $font-color;
@@ -64,7 +64,7 @@
   flex-direction: row;
   line-height: inherit;
   border-radius: 4px;
-  background-color: $font-color-2;
+  background-color: $primary-dark;
   margin: 0 10px;
   a {
     color: $font-color;
@@ -105,7 +105,12 @@
   left: 47.5%;
   height: 70px;
   padding-top: 5px;
-  display: none;
+  // display: none;
+  width: 100px;
+  height: auto;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .splash,
@@ -134,7 +139,7 @@
     font-size: 30px;
     font-weight: bold;
     font-family: $header;
-    color: $font-color;
+    color: $font-color-2;
   }
   .sub-title-2 {
     padding-top: 20px;
@@ -154,7 +159,7 @@
   .sub-title-alt {
     font-weight: bold;
     font-size: 30px;
-    color: $primary-light;
+    color: $font-color;
     font-family: $title;
   }
   .carousel-container {
@@ -209,20 +214,18 @@ a {
   width: 100%;
   height: 100%;
   overflow: scroll;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(43, 122, 120, 0.8);
+  background-color: rgba(31, 40, 51, 0.8);
 }
 
 /* Modal Content/Box */
 .modal-content {
-  background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
 }
 
-/* The Close Button */
+//Close Button
 .close {
   color: #aaa;
   float: right;
@@ -242,16 +245,15 @@ a {
 }
 
 .indices {
-  background: $font-color-2;
+  background: $primary-dark;
   padding: 10px 0;
 }
 .splash-indices {
   display: flex;
   font-size: 14px;
   font-family: $header;
-  background-color: $font-color-2;
-  color: $font-color;
-  // overflow: hidden;
+  background-color: $primary-dark;
+  color: $font-color-2;
   position: relative;
   // flex-wrap: nowrap;
   transform: translateX(100%);
@@ -271,7 +273,7 @@ a {
       background-color: rgb(247, 108, 108);
       padding: 2px 5px;
       border-radius: 4px;
-      color: $font-color;
+      color: $font-color-2;
       font-weight: bold;
       margin-left: 5px;
     }
@@ -284,16 +286,15 @@ a {
   }
   .positive {
     span {
-      background-color: rgb(54, 236, 189);
+      background-color: $chart-green;
       padding: 2px 5px;
       border-radius: 4px;
-      color: $font-color-2;
+      color: $font-color-3;
       font-weight: bold;
       margin-left: 5px;
     }
     i {
-      color: rgb(54, 236, 189);
-
+      color: $chart-green;
       padding-top: 5px;
       padding-right: 5px;
       padding-left: 5px;
@@ -308,4 +309,8 @@ a {
   100% {
     transform: translateX(-150%);
   }
+}
+
+.splash-wiki-link {
+  color: $font-color;
 }

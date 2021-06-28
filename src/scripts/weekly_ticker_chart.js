@@ -34,7 +34,7 @@ const chartTemplate = (chartInfo) => {
 
   let color =
     open[open.length - 1] - open[0] > 0
-      ? "rgb(54, 236, 189)"
+      ? "rgb(98, 205, 50)"
       : "rgb(247, 108, 108)";
   percentChange = percentChange > 0 ? "+" + percentChange : percentChange;
 

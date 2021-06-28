@@ -37,7 +37,6 @@ const closeValue = (num1, num2) => {
 
 export const splashIndices = async (e) => {
   const listings = await fetchData();
-  debugger;
   for (let ticker of Object.values(listings)) {
     const arrow =
       parseFloat(ticker.values[0].close) - parseFloat(ticker.values[1].close) >

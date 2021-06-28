@@ -15,7 +15,7 @@
 }
 
 .tab-container {
-  visibility:hidden;
+  visibility: hidden;
   width: 100%;
   height: 350px;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
@@ -31,7 +31,7 @@
       outline: none;
       cursor: pointer;
       padding: 10px;
-      background: $font-color-2;
+      background: $primary-dark;
       color: $font-color;
       font-weight: bold;
       display: block;
@@ -39,12 +39,15 @@
       border-top-right-radius: 4px;
       &:hover {
         border: 1px solid $font-color-2;
-        animation: pulse 4s infinite;
-        animation-timing-function: linear;
+        border-bottom: none;
+        // animation: pulse 4s infinite;
+        // animation-timing-function: linear;
       }
       &:focus {
-        background: $font-color;
-        color: $font-color-2;
+        border: 1px solid $font-color-2;
+        border-bottom: none;
+        // background: $font-color-2;
+        // color: $font-color;
         animation: none;
       }
       @keyframes pulse {
@@ -69,13 +72,8 @@
   }
 }
 .is-active-chart {
-  background-color: $primary-light;
+  background-color: $primary-dark;
   margin-right: 10px;
-  &:hover {
-    box-shadow: -5px 5px 10px $font-color-2;
-    background-color: $font-color;
-    transition: 2s;
-  }
 }
 
 #dailyChart {
