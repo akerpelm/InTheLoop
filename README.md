@@ -19,7 +19,7 @@
 ## Demo
 Here is a link to the web application: [inTheLoop](https://akerpelm.github.io/InTheLoop/)
 
-![itl_demo](https://user-images.githubusercontent.com/77806372/122697726-f4e82c00-d213-11eb-9889-afffee0a27ee.gif)
+![intheloop_demo](https://user-images.githubusercontent.com/77806372/123662587-9e768100-d803-11eb-88b4-d256e4cabb6d.gif)
 
 
 ## Major Technologies Used
@@ -126,15 +126,15 @@ export const onInput = async (e) => {
   
   input.addEventListener("input", Util.debounce(onInput));
 ```
-![search_demo](https://user-images.githubusercontent.com/77806372/122698290-054cd680-d215-11eb-827e-98653742b2db.gif)
+
+![search_demo](https://user-images.githubusercontent.com/77806372/123662846-d54c9700-d803-11eb-9b6a-62636b35e833.gif)
 
 
 ### Wiki
 * Creation of Wiki modal to explain site functionality and allow for more seamless user experience.
 * Done through use of a modal to keep the site uncluttered and application-like.
 
-![wiki](https://user-images.githubusercontent.com/77806372/122698634-adfb3600-d215-11eb-915a-652eb7bc0d46.gif)
-
+![wiki](https://user-images.githubusercontent.com/77806372/123662951-ec8b8480-d803-11eb-874e-054fb9c95369.gif)
 
 ## Future Direction
 * Add a premium API key to allow for more requests. As a result, more information will become available for display on the information page as well as the chart.
