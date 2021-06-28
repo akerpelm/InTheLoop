@@ -7,6 +7,15 @@
 @import "footer.scss";
 @import "search.scss";
 
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  width: 0;
+  background-color: transparent;
+}
+
 body {
   background-color: $primary;
   color: $font-color;
