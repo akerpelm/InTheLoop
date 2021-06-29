@@ -8,7 +8,8 @@ document.querySelector(
 const fetchData = async () => {
   const response = await axios.get("https://api.twelvedata.com/time_series", {
     params: {
-      symbol: "SPX, IXIC, DJI, RUT, QQQ, EUR/USD, BTC/USD, USD/JPY",
+      symbol:
+        "SPX, IXIC, DJI, RUT, QQQ, EUR/USD, BTC/USD, USD/JPY, ARKG, ARKK, ARKQ",
       interval: "1day",
       apikey: tdAPIKey,
       // exchange : "NYSE",
