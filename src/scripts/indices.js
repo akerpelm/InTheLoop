@@ -25,13 +25,10 @@ const fetchData = async () => {
 
 const closeValue = (num1, num2) => {
   if (num1 - num2 > 0) {
-    return `${(((num1 - num2) / num2) * 100).toFixed(2)}% (+${(
-      num1 - num2
-    ).toFixed(2)})`;
+    return `+${(((num1 - num2) / num2) * 100).toFixed(2)}% 
+    `;
   } else {
-    return `${-1 * (((num1 - num2) / num2) * 100).toFixed(2)}% (${(
-      num1 - num2
-    ).toFixed(2)})`;
+    return `${(((num1 - num2) / num2) * 100).toFixed(2)}% `;
   }
 };
 
