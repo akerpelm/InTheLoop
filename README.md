@@ -1,6 +1,5 @@
 # InTheLoop
 
-
 ## Table of Contents
 * [Major Technologies Used](https://github.com/akerpelm/InTheLoop#major-technologies-used)
 * [Features](https://github.com/akerpelm/InTheLoop#features)
